@@ -57,7 +57,12 @@ export default function CreateRecipe () {
     }
 
     const [createRecipeForm, setCreateRecipeForm] = useState(initialRecipeState)
+    const [ingredientNumber, setIngredientNumber] = useState([1])
 
+
+    const addIngredientField = () => {
+        setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
+    }
 
     const PostRecipe = async(data) => {
         try {
@@ -90,13 +95,19 @@ export default function CreateRecipe () {
                 <input type="text" id="description" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.description}></input>
 
                 <label htmlFor="">Ingredients:</label>
-                    <div>
-                        <label htmlFor="">Ingredient:</label>
-                        <input type="text" id="ingredient1" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.ingredient1}></input>
-                        <label htmlFor="">Ammount:</label>
-                        <input type="text" id="measurement1" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.measurement1}></input>
-                    </div>
-                
+                    
+                    {ingredientNumber.map((e) => 
+                        <div key={e}>
+                            <label htmlFor="">Ingredient:</label>
+                            <input type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm.ingredient1}></input>
+                            <label htmlFor="">Ammount:</label>
+                            <input type="text" id={'measurement1' + e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm.measurement1}></input>
+                        </div>
+                        )}
+                        <button onClick={(event) => {
+                            event.preventDefault()
+                            addIngredientField()}}>Add Ingredient</button>
+
                 <label htmlFor="">Directions:</label>
                 <input type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.directions}></input>
                 <button type="submit">Post Recipe</button>

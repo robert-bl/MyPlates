@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import axiosCreate from '../services/apiServices'
+import { Link } from "react-router-dom"
+
 
 export default function Register () {
 
@@ -45,6 +47,7 @@ export default function Register () {
                 <input type="text" id="password" onChange={handleChange} value={registerForm.password}></input>
                 <button type="submit">Submit</button>
             </form>
+            <button><Link to="/login" className="link">Already a member? Sign in here</Link></button>
         </div>
     )
 }

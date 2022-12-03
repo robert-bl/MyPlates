@@ -5,7 +5,8 @@ export default function NavBar () {
         <div className="nav">
             <div className="navbar-links">
                 <button> <Link to="/" className="link">Home</Link></button>
-                <button><Link to="/register" className="link">Login/Register</Link></button>
+                <button><Link to="/register" className="link">Register</Link></button>
+                <button><Link to="/login" className="link">Login</Link></button>
                 <button><Link to='/createrecipe' className="link">Add Your Recipe</Link></button>
                 <button><Link to='/recipelist' className="link">All Recipes</Link></button>
                 <button><Link to='randomrecipe' className="link">Random recipe</Link></button>

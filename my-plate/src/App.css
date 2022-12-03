@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@1,600&family=Mukta:wght@500&display=swap');
+
+
+
+.App {
+  font-family: 'Mukta', sans-serif;
+  text-align: center;
+}
+
+.header{
+  text-align: center;
+  font-size: 120px;
+  color: darkorange;
+}
+.headerbackground{
+  background-image: url("https://i.redd.it/hwnveiz6u7t61.jpg");
+  background-position: center;
+}
+.nav{
+  background-color: white;
+  color:crimson
+}
+
+.landing{
+  text-align: center;
+  font-size: 30px;
+  color: purple;
+}
+
+
+/*NavBar*/
+
+.navbar-links {
+  display: flex;
+  justify-content: space-around;
+}

@@ -33,6 +33,7 @@ export default function CreateRecipe () {
     const PostRecipe = async(data) => {
         try {
             const response = await axiosCreate.post(`/api/recipes/${userInfo.userId}`, data)
+            return response.data
         } catch (error) {
             throw error
         }

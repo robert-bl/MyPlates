@@ -20,10 +20,8 @@ export default function UpdateRecipe () {
 
     //stores recipe info
     const [recipeInfo, setRecipeInfo] = useState(initialRecipeState)
+
     const [ingredientNumber, setIngredientNumber] = useState([1])
-
-
-    
 
     //get existing recipe info from database and set ingredient form length to existing ingredients
     useEffect(() => {
@@ -48,17 +46,28 @@ export default function UpdateRecipe () {
     }, [])
 
 
-
+    // Add new ingredient field
     const addIngredientField = () => {
         if (ingredientNumber.length < 20) {
-            setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
-            setRecipeInfo({...recipeInfo, ['ingredient' + (ingredientNumber.length +1)]: "", ['measurement' + (ingredientNumber.length +1)]: ""})
-            console.log(recipeInfo)
+            let n = ingredientNumber.length + 1
+            setIngredientNumber([...ingredientNumber, n])
+            setRecipeInfo({...recipeInfo, ['ingredient' + (ingredientNumber.length +1)]: "", ['measurement' + (n)]: ""})
         } else {
             alert("Maximum of 20 ingredients allowed")
         }
     }
 
+        //delete ingredient field
+        const removeIngredientField = () => {
+            if (ingredientNumber.length > 1) {
+            let localArr = [...ingredientNumber]
+            let n = localArr.splice(localArr.length - 1, 1)
+            setIngredientNumber(localArr)
+            setRecipeInfo({...recipeInfo, ['ingredient' + (n)]: null, ['measurement' + (n)]: null})
+            }
+        }
+
+    //Put recipe changes into database
     const UpdateRecipe = async(data) => {
         try {
             const response = await axiosCreate.put(`/api/recipes/${recipeInfo.id}`, data)
@@ -68,10 +77,12 @@ export default function UpdateRecipe () {
         }
     }
 
+    //update recipeInfo when there is input in the forms
     const handleChange = (event) => {
         setRecipeInfo({...recipeInfo, [event.target.id]: event.target.value})
     }
 
+    // submit form changes
     const handleSubmit = async (event) => {
         event.preventDefault()
         await UpdateRecipe(recipeInfo)
@@ -105,6 +116,9 @@ export default function UpdateRecipe () {
                         <button onClick={(event) => {
                             event.preventDefault()
                             addIngredientField()}}>Add Ingredient</button>
+                        <button onClick={(event) => {
+                            event.preventDefault()
+                            removeIngredientField()}}>Remove Ingredient</button>
                 </div>
                 <div>
                 <label htmlFor="">Directions:</label>

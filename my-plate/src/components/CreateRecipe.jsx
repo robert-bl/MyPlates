@@ -76,6 +76,11 @@ export default function CreateRecipe () {
     return (
         <div className="test-wrapper">
             <h3>CreateRecipe</h3>
+
+            {/* Tracks active user for testing, remove before deploymet */}
+            <h2>User {userInfo.userId}</h2>
+
+
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>
@@ -108,12 +113,6 @@ export default function CreateRecipe () {
                 </div>
                 <button type="submit">Post Recipe</button>
             </form>
-            
-            {/* Testing Update Recipe, remove before deplyment */}
-                <div>
-                    <h1>update</h1>
-                    <UpdateRecipe />
-                </div>
         </div>
     )
 }

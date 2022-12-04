@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import axiosCreate from '../services/apiServices'
 import { Link } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Register () {
+
+    const navigate = useNavigate()
 
     //Blank form state
     const initialState = {
@@ -34,6 +37,7 @@ export default function Register () {
         event.preventDefault()
         await RegisterUser(registerForm)
         setRegisterForm(initialState)
+        navigate('/login')
     }
 
 

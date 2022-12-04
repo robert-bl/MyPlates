@@ -3,12 +3,16 @@ import { useContext } from "react"
 import { DataContext } from "../DataContext"
 import axiosCreate from "../services/apiServices"
 
-//git check
+//test
+import UpdateRecipe from "./UpdateRecipe"
+
 
 export default function CreateRecipe () {
 
+    //pull in user info to get user id
     const { userInfo } = useContext(DataContext)
 
+    //initial form state for recipe
     const initialRecipeState = {
         name: "",
         description: "",
@@ -17,10 +21,13 @@ export default function CreateRecipe () {
         measurement1: "",
     }
 
+    //store input recipe information
     const [createRecipeForm, setCreateRecipeForm] = useState(initialRecipeState)
+
+    //track number of ingredient fields to be displayed
     const [ingredientNumber, setIngredientNumber] = useState([1])
 
-
+    //adds new ingredient field, ups ingredientNumber and sets the key and value for the new ingredient in the createRecipeForm
     const addIngredientField = () => {
         if (ingredientNumber.length < 20) {
             setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
@@ -30,6 +37,7 @@ export default function CreateRecipe () {
         }
     }
 
+    //posts createRecipeForm to the database
     const PostRecipe = async(data) => {
         try {
             const response = await axiosCreate.post(`/api/recipes/${userInfo.userId}`, data)
@@ -39,10 +47,12 @@ export default function CreateRecipe () {
         }
     }
 
+    //updates createRecipeForm on form input
     const handleChange = (event) => {
         setCreateRecipeForm({...createRecipeForm, [event.target.id]: event.target.value})
     }
 
+    //handles form submit
     const handleSubmit = async (event) => {
         event.preventDefault()
         await PostRecipe(createRecipeForm)
@@ -68,7 +78,7 @@ export default function CreateRecipe () {
                         <div key={e}>
                             <label htmlFor="">Ingredient:</label>
                             <input type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm['ingredient' + e]}></input>
-                            <label htmlFor="">Ammount:</label>
+                            <label htmlFor="">Amount:</label>
                             <input type="text" id={'measurement' + e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm['measurement' + e]}></input>
                         </div>
                         )}
@@ -82,6 +92,12 @@ export default function CreateRecipe () {
                 </div>
                 <button type="submit">Post Recipe</button>
             </form>
+
+            {/* Testing Update Recipe, remove before deplyment */}
+            <div>
+                <h1>update</h1>
+                <UpdateRecipe />
+            </div>
         </div>
     )
 }

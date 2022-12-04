@@ -9,6 +9,17 @@ const GetAllReviews= async (req, res) =>{
     }
 }
 
+// (get) api/reviews/by-recipe/:recipe_id
+const GetReviewsByRecipe = async (req, res) => {
+  try {
+    let recipe = parseInt(req.params.recipe_id)
+    const reviews = await Review.findAll({where : {recipeId: recipe}})
+    res.send(reviews)
+  } catch (error) {
+    throw error
+  }
+}
+
 
 const GetIndividualReview = async (req, res) => {
     try {
@@ -68,7 +79,8 @@ module.exports= {
     GetIndividualReview,
     CreateNewReview,
     DeleteReview,
-    UpdateReview
+    UpdateReview,
+    GetReviewsByRecipe
     
     
 

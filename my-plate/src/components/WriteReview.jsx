@@ -5,13 +5,12 @@ import { DataContext } from "../DataContext"
 
 
 
-export default function WriteReview () {
+export default function WriteReview (props) {
     const { userInfo } = useContext(DataContext)
-    const { recipeInfo } =useContext(DataContext)
+    // const { recipeInfo } = useContext(DataContext)
 
   
   const initialState = {
-    
     rating: '',
     comment: ''
 }
@@ -21,7 +20,7 @@ const [reviewForm, setReviewForm] = useState(initialState)
 
 const EnterReview = async (data) => {
     try {
-        const response = await axiosCreate.post(`/api/reviews/${userInfo.userId}/${recipeInfo.recipeId}`, data)
+        const response = await axiosCreate.post(`/api/reviews/${userInfo.userId}/${props.recipe_id}`, data)
         return response.data
     } catch (error) {
         throw error
@@ -50,7 +49,6 @@ return (
             <input type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
             <button type="submit">Submit</button>
         </form>
-     
     </div>
 )
 }

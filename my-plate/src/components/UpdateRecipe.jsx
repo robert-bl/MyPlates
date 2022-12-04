@@ -7,7 +7,7 @@ import axiosCreate from "../services/apiServices"
 export default function UpdateRecipe () {
 
     //bring into context for deployment
-    const recipeId = 5
+    const recipeId = 4
 
     //initial form state for recipe
     const initialRecipeState = {
@@ -28,8 +28,6 @@ export default function UpdateRecipe () {
         const GetData = async () => {
             const response = await axios.get(`${BASE_URL}/api/recipes/${recipeId}`)
             setRecipeInfo(response.data)
-            console.log(response.data)
-
             let testNullArr = []
             let entryExists = true
             for (let i = 1; entryExists && i < 21; i++) {
@@ -93,7 +91,6 @@ export default function UpdateRecipe () {
 
     return (
         <div className="update-recipe-wrapper">
-            <h2>updtr</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>

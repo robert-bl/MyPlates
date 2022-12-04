@@ -1,16 +1,18 @@
 import axios from 'axios'
 import {React, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Review from './Review'
+import WriteReview from './WriteReview'
 
 export default function DisplayRecipe () {
 
     const [recipe, setRecipe]= useState({})
     const [user,setUser]=useState({})
+    const [reviews, setReviews] = useState([])
     // const recipeId = userParams()
-    let {id}=userParams 
+    let { id } = useParams() 
     useEffect(()=>{
         const getRecipe = async ()=>{
-            try{
             const response = await axios.get(`http://localhost:3001/api/recipes/${id}`);
             
             setRecipe(response.data)
@@ -18,18 +20,17 @@ export default function DisplayRecipe () {
             const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
             setUser(response2.data)
 
-            // const response3= await axios.get(`http://localhost:3001/api/reviews/`)
-        } catch(e){
+            const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
+            setReviews(response3.data)
             console.log(`please hold`)
-        }
     };
 getRecipe()
 },[])
 
-console.log(recipe)
+console.log(recipe.id)
     return (
         <div className="test-wrapper">
-            <h3>random</h3>
+            <h3>Display Recipe</h3>
             <h2>{recipe.name} by {user.username} </h2>
             <p>{recipe.description}</p>
             <hr></hr>
@@ -78,6 +79,10 @@ console.log(recipe)
                 <div>{recipe.measurement20}</div>
             </ul>
             <p>{recipe.directions}</p>
+            <hr></hr>
+            <h2>show reviews here</h2>
+            <Review recipe_id={recipe.id} />
+            <WriteReview recipe_id={recipe.id} />
         </div>
     )
 }

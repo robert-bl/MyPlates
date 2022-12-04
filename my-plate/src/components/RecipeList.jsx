@@ -37,7 +37,7 @@ console.log(user[1])
         <h3>RecipeList</h3>
         <div >{
             recipe.map((x)=>(
-                <div onClick={()=>goToRecipe()}>{x.name} </div>
+                <div onClick={()=>goToRecipe(x)}>{x.name} </div>
             ))
             }</div>
         </div>

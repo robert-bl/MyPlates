@@ -5,6 +5,8 @@ import RecipeList from './RecipeList'
 import RandomRecipe from './RandomRecipe'
 import SignIn from './SignIn'
 import WriteReview from './WriteReview'
+import Review from './Review'
+import ReviewDetails from './ReviewDetails'
 
 import { Route, Routes } from 'react-router-dom'
 
@@ -18,7 +20,9 @@ export default function Main () {
                 <Route path='/createrecipe' element={<CreateRecipe/>}/>
                 <Route path='/recipelist' element ={<RecipeList/>}/>
                 <Route path='/randomrecipe' element={<RandomRecipe/>}/>
-                <Route path='review' element={<WriteReview/>}></Route>
+                <Route path='reviewpost' element={<WriteReview/>}></Route>
+                <Route path='reviews' element={<Review/>}></Route>
+                <Route path='reviews/:id' element={<ReviewDetails/>}/>
 
             </Routes>
         </div>

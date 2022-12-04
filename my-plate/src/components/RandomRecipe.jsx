@@ -1,19 +1,24 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import Review from './Review'
 
 export default function RandomRecipe () {
 
     const [recipe, setRecipe]= useState({})
     const [user,setUser]=useState({})
     let userId = recipe.user_id
+    //const [randomRecipe, setRandomRecipes]=[recipe[Math.floor(Math.random()*recipe.length)]]
+
 
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
-            const response = await axios.get(`http://localhost:3001/api/recipes/3`);
-            
+            // const response = await axios.get(`http://localhost:3001/api/recipes/`);
+            // const random = Math.floor(Math.random()*response.data.length) 
+            // setRecipe(response.data[random])
+                    // test switch //
+            const response = await axios.get(`http://localhost:3001/api/recipes/1`);
             setRecipe(response.data)
-
             const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
             setUser(response2.data)
 
@@ -25,11 +30,10 @@ export default function RandomRecipe () {
 getRecipe()
 },[])
 
-console.log(recipe)
     return (
         <div className="test-wrapper">
             <h3>random</h3>
-            <h2>{recipe.name} by user {user.username} </h2>
+            <h2>{recipe.name} by {user.username} </h2>
             <p>{recipe.description}</p>
             <hr></hr>
             <ul>
@@ -77,6 +81,9 @@ console.log(recipe)
                 <div>{recipe.measurement20}</div>
             </ul>
             <p>{recipe.directions}</p>
+            <div>
+                <Review/>
+            </div>
         </div>
     )
 }

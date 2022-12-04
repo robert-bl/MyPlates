@@ -1,16 +1,17 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import {React, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function DisplayRecipe () {
 
     const [recipe, setRecipe]= useState({})
     const [user,setUser]=useState({})
     // const recipeId = userParams()
-
+    let {id}=userParams 
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
-            const response = await axios.get(`http://localhost:3001/api/recipes/3`);
+            const response = await axios.get(`http://localhost:3001/api/recipes/${id}`);
             
             setRecipe(response.data)
 
@@ -29,7 +30,7 @@ console.log(recipe)
     return (
         <div className="test-wrapper">
             <h3>random</h3>
-            <h2>{recipe.name} by user {user.username} </h2>
+            <h2>{recipe.name} by {user.username} </h2>
             <p>{recipe.description}</p>
             <hr></hr>
             <ul>

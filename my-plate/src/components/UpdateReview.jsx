@@ -1,21 +1,18 @@
 import { useState } from 'react'
 import axiosCreate from '../services/apiServices'
-// import { useContext } from "react"
-// import { DataContext } from "../DataContext"
+
 
 
 
 export default function UpdateReview ({id}) {
-    // const { userInfo } = useContext(DataContext)
-    // const { recipeInfo } =useContext(DataContext)
+  
 
   
   const initialState = {
     
     rating: '',
     comment: '',
-    // user_id:'',
-    // recipe_id:''
+
 
 }
 
@@ -54,11 +51,7 @@ return (
             <input type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
             <button type="submit">Submit</button>
 
-            {/* <label>Enter userid:</label>
-            <input type="text" id="user_id" onChange={handleChange} value={reviewForm.user_id}></input>
-            <label>Enter recipeid:</label>
-            <input type="text" id="recipe_id" onChange={handleChange} value={reviewForm.recipe_id}></input>
-            <button type="submit">Submit</button> */}
+    
         </form>
      
     </div>

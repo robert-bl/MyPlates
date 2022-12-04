@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axiosCreate from '../services/apiServices'
+import UpdateReview from './UpdateReview'
 
 
 
-export default function ReviewDetails () {
+export default function ReviewDetails (props) {
         let { id } = useParams()
-        
+      
         const [reviews, setReviews] = useState('')
        
         const getReviews= async ()=>{
@@ -45,6 +46,7 @@ export default function ReviewDetails () {
                 <div className='returnbutton'>
                 <button className='tohome'><Link to='/'> Home </Link> </button>
                 <button className='recipe'><Link to='/reviews'> Back </Link> </button>
+                <UpdateReview id={id}/>
                 </div>
               </div>
     </div>

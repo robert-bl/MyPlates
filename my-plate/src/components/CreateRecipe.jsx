@@ -76,6 +76,7 @@ export default function CreateRecipe () {
     return (
         <div className="test-wrapper">
             <h3>CreateRecipe</h3>
+            <h2>User {userInfo.userId}</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>

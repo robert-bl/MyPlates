@@ -35,7 +35,7 @@ if(reviews){
             reviews.map((review)=>(
             <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
 
-            <h2>Current recipe has an user Id of {review.user_id} and review id of {review.recipe_id}. Reviewer states that the recipe was {review.rating} out of 5 and they said that {review.comment}  </h2>
+            <h2>Current recipe has an user Id of {review.user_id} and recipe id of {review.recipe_id}. Reviewer states that the recipe was {review.rating} out of 5 and they said that {review.comment}  </h2>
 
 
             </div>

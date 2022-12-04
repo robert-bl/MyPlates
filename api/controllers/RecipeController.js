@@ -1,5 +1,6 @@
 const { Recipe } = require('../models')
 
+// Route: (get) /api/recipes
 const GetAllRecipes = async (req, res) =>{ 
     try{
         const recipes = await Recipe.findAll()
@@ -9,7 +10,7 @@ const GetAllRecipes = async (req, res) =>{
     }
 }
 
-
+// Route: (get) /api/recipes/:recipe_id
 const GetIndividualRecipe = async (req, res) => {
     try {
       const recipe = await Recipe.findByPk(req.params.recipe_id
@@ -20,6 +21,7 @@ const GetIndividualRecipe = async (req, res) => {
     }
   }
 
+  // Route: (post) /api/recipes/:user_id
   const CreateNewRecipe = async (req, res) => {
     try {
       
@@ -37,6 +39,7 @@ const GetIndividualRecipe = async (req, res) => {
     }
   }
 
+   // Route: (delete) /api/recipes/:recipe_id
   const DeleteRecipe = async (req, res) => {
     try {
       let recipeId = (req.params.recipe_id)
@@ -47,7 +50,7 @@ const GetIndividualRecipe = async (req, res) => {
     }
   }
 
-
+  // Route: (put) /api/recipes/:recipe_id
   const UpdateRecipe = async (req, res) => {
     try {
       let recipeId = parseInt(req.params.recipe_id)

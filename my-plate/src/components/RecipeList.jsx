@@ -15,7 +15,6 @@ export default function RecipeList () {
 
             const response2= await axios.get(`http://localhost:3001/api/users/`)
             setUser(response2.data)
-            console.log(response2)
             // const response3= await axios.get(`http://localhost:3001/api/reviews/`)
         } catch(e){
             console.log(`please hold`)
@@ -26,18 +25,19 @@ getRecipe()
 },[])
 
 const goToRecipe = (x)=>{
-    // navigate(`/displayrecipe/${x.id}`)
-    navigate(`/randomrecipe`)
+    console.log(x.id)
+    navigate(`/displayrecipe/${x.id}`)
+    // navigate(`/randomrecipe`)
 }
 
-console.log(user[1])
+// console.log(user[1])
 // console.log(user)
     return (
         <div className="test-wrapper">
         <h3>RecipeList</h3>
         <div >{
             recipe.map((x)=>(
-                <div onClick={()=>goToRecipe(x)}>{x.name} </div>
+                <div onClick={()=>goToRecipe(x)} key={x.id}>{x.name} </div>
             ))
             }</div>
         </div>

@@ -30,11 +30,24 @@ export default function CreateRecipe () {
     //adds new ingredient field, ups ingredientNumber and sets the key and value for the new ingredient in the createRecipeForm
     const addIngredientField = () => {
         if (ingredientNumber.length < 20) {
-            setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
-            setCreateRecipeForm({...createRecipeForm, ['ingredient' + (ingredientNumber.length +1)]: "", ['measurement' + (ingredientNumber.length +1)]: ""})
+            let n = ingredientNumber.length + 1
+            setIngredientNumber([...ingredientNumber, n])
+            setCreateRecipeForm({...createRecipeForm, ['ingredient' + (n)]: "", ['measurement' + (n)]: ""})
         } else {
             alert("Maximum of 20 ingredients allowed")
         }
+        console.log(createRecipeForm)
+    }
+
+    //delete ingredient field
+    const removeIngredientField = () => {
+        if (ingredientNumber.length > 1) {
+        let localArr = [...ingredientNumber]
+        let n = localArr.splice(localArr.length - 1, 1)
+        setIngredientNumber(localArr)
+        setCreateRecipeForm({...createRecipeForm, ['ingredient' + (n)]: null, ['measurement' + (n)]: null})
+        }
+        console.log(createRecipeForm)
     }
 
     //posts createRecipeForm to the database
@@ -85,6 +98,9 @@ export default function CreateRecipe () {
                         <button onClick={(event) => {
                             event.preventDefault()
                             addIngredientField()}}>Add Ingredient</button>
+                        <button onClick={(event) => {
+                            event.preventDefault()
+                            removeIngredientField()}}>Remove Ingredient</button>
                 </div>
                 <div>
                 <label htmlFor="">Directions:</label>
@@ -92,12 +108,12 @@ export default function CreateRecipe () {
                 </div>
                 <button type="submit">Post Recipe</button>
             </form>
-
+            
             {/* Testing Update Recipe, remove before deplyment */}
-            <div>
-                <h1>update</h1>
-                <UpdateRecipe />
-            </div>
+                <div>
+                    <h1>update</h1>
+                    <UpdateRecipe />
+                </div>
         </div>
     )
 }

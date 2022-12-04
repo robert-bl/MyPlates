@@ -7,6 +7,7 @@ import SignIn from './SignIn'
 import WriteReview from './WriteReview'
 import Review from './Review'
 import ReviewDetails from './ReviewDetails'
+import DeleteReview from './DeleteReview'
 
 
 import { Route, Routes } from 'react-router-dom'
@@ -24,7 +25,8 @@ export default function Main () {
                 <Route path='reviewpost' element={<WriteReview/>}></Route>
                 <Route path='reviews' element={<Review/>}></Route>
                 <Route path='reviews/:id' element={<ReviewDetails/>}/>
-
+                <Route path="deletereview" element={<DeleteReview/>}/>
+               
             </Routes>
         </div>
     )

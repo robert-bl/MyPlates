@@ -10,6 +10,7 @@ export default function NavBar () {
                 <button><Link to='/createrecipe' className="link">Add Your Recipe</Link></button>
                 <button><Link to='/recipelist' className="link">All Recipes</Link></button>
                 <button><Link to='randomrecipe' className="link">Random recipe</Link></button>
+                <button><Link to='reviews' className="link">All Reviews</Link></button>
             </div>
         </div>
     )

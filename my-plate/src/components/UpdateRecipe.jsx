@@ -2,73 +2,81 @@ import { useEffect } from "react"
 import axios from "axios"
 import { BASE_URL } from "../services/apiServices"
 import { useState } from "react"
+import axiosCreate from "../services/apiServices"
 
 export default function UpdateRecipe () {
 
     //bring into context for deployment
     const recipeId = 5
 
+    //initial form state for recipe
+    const initialRecipeState = {
+        name: "",
+        description: "",
+        directions: "",
+        ingredient1: "",
+        measurement1: "",
+    }
+
     //stores recipe info
-    const [recipeInfo, setRecipeInfo] = useState({})
-
-
+    const [recipeInfo, setRecipeInfo] = useState(initialRecipeState)
     const [ingredientNumber, setIngredientNumber] = useState([1])
 
-    //get existing recipe info from database
+
+    
+
+    //get existing recipe info from database and set ingredient form length to existing ingredients
     useEffect(() => {
         const GetData = async () => {
             const response = await axios.get(`${BASE_URL}/api/recipes/${recipeId}`)
-
             setRecipeInfo(response.data)
             console.log(response.data)
 
-            let tot = true
-            let i = 1
-            while (tot === true) {
+            let testNullArr = []
+            let entryExists = true
+            for (let i = 1; entryExists && i < 21; i++) {
                 console.log(response.data[`ingredient${i}`])
                 if (response.data[`ingredient${i}`] !== null) {
-                    setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
-                    console.log(ingredientNumber)
-                    i++
+                    testNullArr.push(i)
                 } else {
-                    tot = false
-                }
+                    entryExists = false
+                }            
             }
+            setIngredientNumber(testNullArr)
         }
         GetData()
-        console.log('ello')
-
     }, [])
 
 
 
     const addIngredientField = () => {
-        // if (ingredientNumber.length < 20) {
-        //     setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
-        //     setCreateRecipeForm({...createRecipeForm, ['ingredient' + (ingredientNumber.length +1)]: "", ['measurement' + (ingredientNumber.length +1)]: ""})
-        // } else {
-        //     alert("Maximum of 20 ingredients allowed")
-        // }
+        if (ingredientNumber.length < 20) {
+            setIngredientNumber([...ingredientNumber, ingredientNumber.length + 1])
+            setRecipeInfo({...recipeInfo, ['ingredient' + (ingredientNumber.length +1)]: "", ['measurement' + (ingredientNumber.length +1)]: ""})
+            console.log(recipeInfo)
+        } else {
+            alert("Maximum of 20 ingredients allowed")
+        }
     }
 
-    const PostRecipe = async(data) => {
+    const UpdateRecipe = async(data) => {
         try {
-            // const response = await axiosCreate.post(`/api/recipes/${userInfo.userId}`, data)
-            // return response.data
+            const response = await axiosCreate.put(`/api/recipes/${recipeInfo.id}`, data)
+            return response.data
         } catch (error) {
             throw error
         }
     }
 
     const handleChange = (event) => {
-        // setCreateRecipeForm({...createRecipeForm, [event.target.id]: event.target.value})
+        setRecipeInfo({...recipeInfo, [event.target.id]: event.target.value})
     }
 
     const handleSubmit = async (event) => {
-        // event.preventDefault()
-        // await PostRecipe(createRecipeForm)
-        // setCreateRecipeForm(initialRecipeState)
-        // setIngredientNumber([1])
+        event.preventDefault()
+        await UpdateRecipe(recipeInfo)
+        setRecipeInfo(initialRecipeState)
+        setIngredientNumber([1])
     }
 
 

@@ -12,10 +12,16 @@ function App() {
     userId: 1,
     username: ""
   })
+  const [recipeInfo, setRecipeInfo] = useState({
+    recipeId: 1,
+   
+  })
+
+
 
   return (
     <div className="App">
-      <DataContext.Provider value={{userInfo, setUserInfo}}>
+      <DataContext.Provider value={{userInfo, setUserInfo,recipeInfo, setRecipeInfo}}>
         <Header />
         <Main />
       </DataContext.Provider>

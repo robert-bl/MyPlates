@@ -14,6 +14,7 @@ export default function Review () {
             const response =await axiosCreate.get('/api/reviews')
             setReviews(response.data)
             
+            
         }
         getData()
     },[])

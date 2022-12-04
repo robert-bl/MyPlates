@@ -7,15 +7,16 @@ import axiosCreate from '../services/apiServices'
 
 export default function ReviewDetails () {
         let { id } = useParams()
-  
+        
         const [reviews, setReviews] = useState('')
        
         const getReviews= async ()=>{
             const response =await axiosCreate.get('/api/reviews/')
             setReviews(response.data)
-            console.log(response.data)
+       
           
-          let selectedReviews =response.data.find(reviews=>reviews.id===id)
+          let selectedReviews =response.data.find(reviews=>reviews.id==id)
+          
           setReviews(selectedReviews)
           
           }
@@ -23,7 +24,7 @@ export default function ReviewDetails () {
         useEffect(()=>{
             getReviews()
             
-          })
+          },[])
       
           
         return (reviews) ? (
@@ -43,7 +44,7 @@ export default function ReviewDetails () {
                 
                 <div className='returnbutton'>
                 <button className='tohome'><Link to='/'> Home </Link> </button>
-                <button className='recipe'><Link to='/recipes'> Back </Link> </button>
+                <button className='recipe'><Link to='/reviews'> Back </Link> </button>
                 </div>
               </div>
     </div>

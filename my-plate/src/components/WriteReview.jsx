@@ -41,7 +41,10 @@ const handleSubmit = async (event) => {
 return (
     <div className="test-wrapper">
         <h3>Write a review</h3>
+
+        {/* Tracks active user for testing, remove before deploymet */}
         <h4>User {userInfo.userId}</h4>
+
         <form onSubmit={handleSubmit}>
             
             <label>Enter a number out of 5:</label>

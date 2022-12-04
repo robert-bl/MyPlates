@@ -1,14 +1,19 @@
 import axios from 'axios'
 import {React, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
 
 export default function DisplayRecipe () {
 
+    let navigate = useNavigate()
+
     const [recipe, setRecipe]= useState({})
     const [user,setUser]=useState({})
-    const [reviews, setReviews] = useState([])
+
+    //can be removed, reviews now displaying through linked review component
+        // const [reviews, setReviews] = useState([])
+
     // const recipeId = userParams()
     let { id } = useParams() 
     useEffect(()=>{
@@ -20,18 +25,28 @@ export default function DisplayRecipe () {
             const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
             setUser(response2.data)
 
-            const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
-            setReviews(response3.data)
-            console.log(`please hold`)
+        //can be removed, reviews now displaying through linked review component
+            // const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
+            // setReviews(response3.data)
+            // console.log(`please hold`)
     };
 getRecipe()
 },[])
+
+
+const goToUpdate = () => {
+    navigate(`/updaterecipe/${id}`)
+}
 
 console.log(recipe.id)
     return (
         <div className="test-wrapper">
             <h3>Display Recipe</h3>
             <h2>{recipe.name} by {user.username} </h2>
+            <button onClick={(event) => {
+                event.preventDefault()
+                goToUpdate()
+            }}>Update Recipe</button>
             <p>{recipe.description}</p>
             <hr></hr>
             <ul>

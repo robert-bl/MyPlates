@@ -1,13 +1,15 @@
-import { useEffect } from "react"
-import axios from "axios"
+import { useState, useEffect } from "react"
 import { BASE_URL } from "../services/apiServices"
-import { useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import axios from "axios"
 import axiosCreate from "../services/apiServices"
 
 export default function UpdateRecipe () {
 
+    let navigate = useNavigate()
+
     //bring into context for deployment
-    const recipeId = 4
+    let { recipe_id } = useParams()
 
     //initial form state for recipe
     const initialRecipeState = {
@@ -26,7 +28,7 @@ export default function UpdateRecipe () {
     //get existing recipe info from database and set ingredient form length to existing ingredients
     useEffect(() => {
         const GetData = async () => {
-            const response = await axios.get(`${BASE_URL}/api/recipes/${recipeId}`)
+            const response = await axios.get(`${BASE_URL}/api/recipes/${recipe_id}`)
             setRecipeInfo(response.data)
             let testNullArr = []
             let entryExists = true
@@ -86,11 +88,13 @@ export default function UpdateRecipe () {
         await UpdateRecipe(recipeInfo)
         setRecipeInfo(initialRecipeState)
         setIngredientNumber([1])
+        navigate(`/displayrecipe/${recipe_id}`)
     }
 
 
     return (
         <div className="update-recipe-wrapper">
+            <h1>Update Recipe</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>
@@ -121,7 +125,7 @@ export default function UpdateRecipe () {
                 <label htmlFor="">Directions:</label>
                 <input type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={recipeInfo.directions}></input>
                 </div>
-                <button type="submit">Post Recipe</button>
+                <button type="submit">Update Recipe</button>
             </form>
         </div>
     )

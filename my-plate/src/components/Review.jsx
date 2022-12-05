@@ -60,7 +60,6 @@ function getAverage(){
 
 
       }
-    console.log(finalAverage)
     return finalAverage
 }
 
@@ -100,10 +99,6 @@ if(reviews){
         })()  
     }
             
-        {/* {
-        
-        {finalAverage}=== 0 ? <h1>No current reviews</h1>: <h1>This recipe has an average review of {finalAverage} stars</h1> } */}
-        
         </div>
         </div>
     )

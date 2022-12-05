@@ -31,7 +31,7 @@ function myConfirmFunction() {
     } else {
       text = "You canceled!";
     }
-    navigate(`/displayrecipe/${id}`)
+    navigate(`/displayrecipe/${recipeId}`)
 }
 
 

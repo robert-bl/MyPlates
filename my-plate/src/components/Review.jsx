@@ -6,7 +6,7 @@ import axiosCreate from '../services/apiServices'
 
 export default function Review (props) {
     const [reviews, setReviews] = useState(null)
-    let finalAverage
+    let finalAverage = 0
     
 
     useEffect(()=>{
@@ -46,7 +46,6 @@ function getAverage(){
     return finalAverage
 }
 
-
 function getAverage(){
     let box =[]
     let averageAdd = 0
@@ -61,7 +60,7 @@ function getAverage(){
 
 
       }
-    
+    console.log(finalAverage)
     return finalAverage
 }
 
@@ -84,9 +83,26 @@ if(reviews){
             
         }
         </div>
-        <div>
 
-        <h2>This recipe has an average review of {finalAverage} stars</h2>
+        <div>
+    {
+         (() => {
+            if(finalAverage===0) {
+                    return (
+                        <h1>No current reviews</h1>
+                    )
+                
+                } else {
+                    return (
+                        <h1>This recipe has an average review of {finalAverage} stars</h1> 
+                    )
+                }
+        })()  
+    }
+            
+        {/* {
+        
+        {finalAverage}=== 0 ? <h1>No current reviews</h1>: <h1>This recipe has an average review of {finalAverage} stars</h1> } */}
         
         </div>
         </div>

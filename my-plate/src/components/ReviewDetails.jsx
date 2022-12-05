@@ -9,6 +9,7 @@ import UpdateReview from './UpdateReview'
 
 export default function ReviewDetails (props) {
         let { id } = useParams()
+        
       
         const [reviews, setReviews] = useState('')
        
@@ -48,7 +49,7 @@ export default function ReviewDetails (props) {
                 <button className='tohome'><Link to='/'> Home </Link> </button>
                 <button className='recipe'><Link to='/reviews'> Back </Link> </button>
                 <UpdateReview id={id}/>
-                <DeleteReview id={id}/>
+                <DeleteReview id={id} recipeId={reviews.recipe_id}/>
                 </div>
               </div>
     </div>

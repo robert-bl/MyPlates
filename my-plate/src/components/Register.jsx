@@ -11,7 +11,8 @@ export default function Register () {
     //Blank form state
     const initialState = {
         username: '',
-        password: ''
+        undPassword: '',
+        // confirmPassword: ''
     }
 
     //state variable for form data
@@ -20,7 +21,7 @@ export default function Register () {
     //axios post function for registering user
     const RegisterUser = async (data) => {
         try {
-            const response = await axiosCreate.post('/api/users', data)
+            const response = await axiosCreate.post('/api/users/register', data)
             return response.data
         } catch (error) {
             throw error
@@ -48,7 +49,9 @@ export default function Register () {
                 <label>Username:</label>
                 <input type="text" id="username" onChange={handleChange} value={registerForm.username}></input>
                 <label>Password:</label>
-                <input type="text" id="password" onChange={handleChange} value={registerForm.password}></input>
+                <input type="password" id="password" onChange={handleChange} value={registerForm.password}></input>
+                {/* <label>Confirm Password:</label>
+                <input type="password" id="confirmPassword" onChange={handleChange} value={registerForm.confirmPassword}></input> */}
                 <button type="submit">Submit</button>
             </form>
             <button><Link to="/login" className="link">Already a member? Sign in here</Link></button>

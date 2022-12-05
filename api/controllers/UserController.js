@@ -75,9 +75,22 @@ const GetIndividualUserProfile = async (req, res) => {
 //Auth Controllers
 
 
+// const Register = async (req, res) => {
+//   try {
+//     const { username, password } = req.body
+//     //check password vs passwordDigest vs undPassword
+//     let passwordDigest = await middleware.hashPassword(password)
+//     const user = await User.create({username, passwordDigest})
+//     res.send(user)
+//   } catch (error) {
+//     throw error
+//   }
+// }
+
 const Register = async (req, res) => {
   try {
     const { username, undPassword } = req.body
+    //check password vs passwordDigest vs undPassword
     let password = await middleware.hashPassword(undPassword)
     const user = await User.create({username, password})
     res.send(user)
@@ -85,6 +98,35 @@ const Register = async (req, res) => {
     throw error
   }
 }
+
+// const Login = async (req, res) => {
+//   try {
+//     const user = await User.findOne({
+//       where: {username : req.body.username},
+//       raw: true
+//     })
+//     if (
+//       user &&
+//       //check password vs passwordDigest vs undPassword
+//       middleware.comparePassword(user.passwordDigest, req.body.password)
+//     ) {
+//       let payload = {
+//         id: user.id,
+        
+//       }
+//       let token = middleware.createToken(payload)
+//       return res.send({
+//         user: payload, token
+//       })
+//     }
+//     res.status(401).send({
+//       status: 'error',
+//       msg: 'unauthorized, login'
+//     })
+//   } catch (error) {
+//     throw error
+//   }
+// }
 
 const Login = async (req, res) => {
   try {
@@ -94,6 +136,7 @@ const Login = async (req, res) => {
     })
     if (
       user &&
+      //check password vs passwordDigest vs undPassword
       middleware.comparePassword(user.password, req.body.undPassword)
     ) {
       let payload = {

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { DataContext } from "../DataContext"
 
 export default function NavBar () {
+    const { handleLogOut } = useContext(DataContext)
+
+
     return (
         <div className="nav">
             <div className="navbar-links">

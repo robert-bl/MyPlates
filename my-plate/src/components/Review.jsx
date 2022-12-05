@@ -12,7 +12,7 @@ export default function Review (props) {
 
         //if statement works with uesEffect props dependency to make sure that the axios call only gets made after a valid recipe_id is passed in from DisplayRecipe
             if (props.recipe_id) {
-            const response = await axiosCreate.get(`api/reviews/by-recipe/${props.recipe_id}`)
+            const response = await axiosCreate.get(`/api/reviews/by-recipe/${props.recipe_id}`)
             setReviews(response.data)
             console.log('hit')
             }

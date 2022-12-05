@@ -8,7 +8,7 @@ export default function DisplayRecipe () {
 
     let navigate = useNavigate()
 
-    const [recipe, setRecipe]= useState({})
+    const [recipe, setRecipe]= useState(null)
     // const [user,setUser]=useState({})
 
     //can be removed, reviews now displaying through linked review component
@@ -20,7 +20,7 @@ export default function DisplayRecipe () {
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/recipes/${id}`);
-            
+        
             setRecipe(response.data)
 
             // const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
@@ -42,12 +42,15 @@ const goToUpdate = () => {
     navigate(`/updaterecipe/${id}`)
 }
 
-console.log(recipe.user.username)
     return (
+        (!recipe)?
+        <h2>Loading...</h2>
+        :
         <div className="test-wrapper">
             <h3>Display Recipe</h3>
-            <h2>{recipe.name} by 
-            {/* {(recipe.user.username)?recipe.user.username:'please wait'}  */}</h2>
+            <h2>
+            {recipe.name} by {recipe.user.username} 
+            </h2>
             <button onClick={(event) => {
                 event.preventDefault()
                 goToUpdate()

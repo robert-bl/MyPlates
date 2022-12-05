@@ -94,7 +94,7 @@ const Login = async (req, res) => {
     })
     if (
       user &&
-      middleware.comparePassword(user.passwordDigest, req.body.password)
+      middleware.comparePassword(user.password, req.body.undPassword)
     ) {
       let payload = {
         id: user.id,

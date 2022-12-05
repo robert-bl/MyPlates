@@ -20,7 +20,7 @@ const [reviewForm, setReviewForm] = useState(initialState)
 
 const EnterReview = async (data) => {
     try {
-        const response = await axiosCreate.post(`/api/reviews/${userInfo.userId}/${props.recipe_id}`, data)
+        const response = await axiosCreate.post(`/api/reviews/${userInfo.userId}/${props.id}`, data)
         return response.data
     } catch (error) {
         throw error

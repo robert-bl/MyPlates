@@ -60,35 +60,6 @@ const GetIndividualUserProfile = async (req, res) => {
     }
   }
 
-
-  const Login = async (req, res) => {
-    try {
-      const user = await User.findOne({
-        where: {username : req.body.username},
-        raw: true
-      })
-      if (
-        user &&
-        middleware.comparePassword(user.passwordDigest, req.body.password)
-      ) {
-        let payload = {
-          id: user.id,
-          
-        }
-        let token = middleware.createToken(payload)
-        return res.send({
-          user: payload, token
-        })
-      }
-      res.status(401).send({
-        status: 'error',
-        msg: 'unauthorized, login'
-      })
-    } catch (error) {
-      throw error
-    }
-  }
-
   const GetUserAndRecipes = async (req, res) => {
     try {
         const userAndRecipe = await User.findByPk(req.params.user_id, {
@@ -100,6 +71,49 @@ const GetIndividualUserProfile = async (req, res) => {
     }
 }
 
+
+//Auth Controllers
+
+
+const Register = async (req, res) => {
+  try {
+    const { username, undPassword } = req.body
+    let password = await middleware.hashPassword(undPassword)
+    const user = await User.create({username, password})
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
+const Login = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: {username : req.body.username},
+      raw: true
+    })
+    if (
+      user &&
+      middleware.comparePassword(user.passwordDigest, req.body.password)
+    ) {
+      let payload = {
+        id: user.id,
+        
+      }
+      let token = middleware.createToken(payload)
+      return res.send({
+        user: payload, token
+      })
+    }
+    res.status(401).send({
+      status: 'error',
+      msg: 'unauthorized, login'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
   
 module.exports= {
     GetUserProfiles,
@@ -108,5 +122,6 @@ module.exports= {
     DeleteAccount,
     UpdateAccount,
     GetUserAndRecipes,
-    Login
+    Login,
+    Register
   }

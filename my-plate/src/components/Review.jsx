@@ -8,6 +8,7 @@ export default function Review (props) {
     const [reviews, setReviews] = useState(null)
     let finalAverage
     
+
     useEffect(()=>{
         const getData= async()=>{
 
@@ -27,6 +28,24 @@ let navigate = useNavigate()
 const showReviews=(reviews)=>{
     navigate(`/reviews/${reviews.id}`)
 }
+function getAverage(){
+    let box =[]
+    let averageAdd = 0
+    let penultAverage
+    reviews.map((review)=>{
+        box.push(review.rating)
+    })
+    for (let i = 0; i < box.length; i++) {
+        averageAdd += box[i]
+        penultAverage = averageAdd/(box.length)
+        finalAverage= Math.round(penultAverage * 100) / 100
+
+
+      }
+
+    return finalAverage
+}
+
 
 function getAverage(){
     let box =[]
@@ -66,7 +85,9 @@ if(reviews){
         }
         </div>
         <div>
-      <h2>This recipe has an average review of {finalAverage} stars</h2>
+
+        <h2>This recipe has an average review of {finalAverage} stars</h2>
+        
         </div>
         </div>
     )

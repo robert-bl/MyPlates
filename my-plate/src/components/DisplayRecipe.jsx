@@ -8,7 +8,7 @@ export default function DisplayRecipe () {
 
     let navigate = useNavigate()
 
-    const [recipe, setRecipe]= useState({})
+    const [recipe, setRecipe]= useState(null)
     // const [user,setUser]=useState({})
 
     //can be removed, reviews now displaying through linked review component

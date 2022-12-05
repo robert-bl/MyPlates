@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
 import DeleteRecipe from './DeleteRecipe'
+import ReviewDetails from './ReviewDetails'
 
 export default function DisplayRecipe () {
 

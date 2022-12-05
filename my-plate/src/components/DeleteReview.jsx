@@ -26,12 +26,14 @@ function myConfirmFunction() {
       text = "You pressed OK!";
       DeleteReview()
       alert(`Your review of id of ${id} is deleted`)
+      navigate(`/displayrecipe/${recipeId}`)
 
 
     } else {
       text = "You canceled!";
+      navigate(`/reviews/${id}`)
+
     }
-    navigate(`/displayrecipe/${recipeId}`)
 }
 
 

@@ -24,7 +24,7 @@ export default function Review (props) {
 let navigate = useNavigate()
 
 const showReviews=(reviews)=>{
-    navigate(`${reviews.id}`)
+    navigate(`/reviews/${reviews.id}`)
 }
 
 

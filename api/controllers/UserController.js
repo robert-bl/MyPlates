@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { Recipe, User } = require('../models')
 const middleware = require('../middleware')
 
 const GetUserProfiles = async (req, res) =>{ 
@@ -89,6 +89,16 @@ const GetIndividualUserProfile = async (req, res) => {
     }
   }
 
+  const GetUserAndRecipes = async (req, res) => {
+    try {
+        const userAndRecipe = await User.findByPk(req.params.user_id, {
+        include: [{ model: Recipe, as: 'recipe' }]
+        })
+        res.send(userAndRecipe)
+    } catch (error) {
+        throw error
+    }
+}
 
   
 module.exports= {
@@ -97,5 +107,6 @@ module.exports= {
     CreateNewUser,
     DeleteAccount,
     UpdateAccount,
+    GetUserAndRecipes,
     Login
   }

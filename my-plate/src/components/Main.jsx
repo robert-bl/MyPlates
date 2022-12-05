@@ -12,6 +12,8 @@ import DisplayRecipe from './DisplayRecipe'
 import UpdateRecipe from './UpdateRecipe'
 // import DeleteRecipe from './DeleteRecipe'
 
+import UserPage from './UserPage'
+
 
 import { Route, Routes } from 'react-router-dom'
 
@@ -32,6 +34,8 @@ export default function Main () {
                 <Route path="displayrecipe/:id" element={<DisplayRecipe/>}/>
                 <Route path="/updaterecipe/:recipe_id" element={<UpdateRecipe />} />
                 {/* <Route path="deleterecipe" element={<DeleteRecipe/>}/> */}
+                <Route path="user/:id"
+                element={<UserPage/>} />
             </Routes>
         </div>
     )

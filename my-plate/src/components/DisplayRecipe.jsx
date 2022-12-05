@@ -3,7 +3,7 @@ import {React, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
-
+import DeleteRecipe from './DeleteRecipe'
 export default function DisplayRecipe () {
 
     let navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function DisplayRecipe () {
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/recipes/${id}`);
-            
+        
             setRecipe(response.data)
 
             // const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
@@ -42,12 +42,15 @@ const goToUpdate = () => {
     navigate(`/updaterecipe/${id}`)
 }
 
-console.log(recipe.user.username)
     return (
+        (!recipe)?
+        <h2>Loading...</h2>
+        :
         <div className="test-wrapper">
             <h3>Display Recipe</h3>
-            <h2>{recipe.name} by 
-            {/* {(recipe.user.username)?recipe.user.username:'please wait'}  */}</h2>
+            <h2>
+            {recipe.name} by {recipe.user.username} 
+            </h2>
             <button onClick={(event) => {
                 event.preventDefault()
                 goToUpdate()
@@ -140,7 +143,9 @@ console.log(recipe.user.username)
             <hr></hr>
             <h2>show reviews here</h2>
             <Review recipe_id={recipe.id} />
-            <WriteReview recipe_id={recipe.id} />
+             {/* <button><Link to='/reviews' className="link">Check reviews</Link></button> */}
+            <WriteReview id={id} />
+            <DeleteRecipe id={id}/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import {React, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
-
+import DeleteRecipe from './DeleteRecipe'
 export default function DisplayRecipe () {
 
     let navigate = useNavigate()
@@ -135,7 +135,9 @@ console.log(recipe.id)
             <hr></hr>
             <h2>show reviews here</h2>
             <Review recipe_id={recipe.id} />
-            <WriteReview recipe_id={recipe.id} />
+             {/* <button><Link to='/reviews' className="link">Check reviews</Link></button> */}
+            <WriteReview id={id} />
+            <DeleteRecipe id={id}/>
         </div>
     )
 }

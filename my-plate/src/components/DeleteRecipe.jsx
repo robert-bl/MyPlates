@@ -7,11 +7,12 @@ import { Link } from "react-router-dom"
 
 
 
-export default function DeleteReview ({id}) {
+export default function DeleteRecipe ({id}) {
 
 const DeleteReview = async (data) => {
+    console.log(id)
     try {
-        const response = await axiosCreate.delete(`/api/reviews/${id}`, data)
+        const response = await axiosCreate.delete(`/api/recipes/${id}`, data)
         return response.data
     } catch (error) {
         throw error
@@ -19,7 +20,7 @@ const DeleteReview = async (data) => {
 }
 
 function messageDelete() {
-    alert(`Your review of id of ${id} is deleted`)
+    alert(`Your recipe of id of ${id} is deleted`)
 }
 
 function deletionComplete(){
@@ -30,8 +31,8 @@ function deletionComplete(){
 
 return (
     <div className="test-wrapper">
-        <h2>You may delete this review</h2>
-      <button onClick={deletionComplete}> <Link to='/reviews' className="link">Delete</Link>
+        <h2>You may delete this recipe</h2>
+      <button onClick={deletionComplete}> <Link to='/recipelist' className="link">Delete</Link>
 </button>
      
     </div>

@@ -7,9 +7,10 @@ import SignIn from './SignIn'
 import WriteReview from './WriteReview'
 import Review from './Review'
 import ReviewDetails from './ReviewDetails'
-import DeleteReview from './DeleteReview'
+// import DeleteReview from './DeleteReview'
 import DisplayRecipe from './DisplayRecipe'
 import UpdateRecipe from './UpdateRecipe'
+// import DeleteRecipe from './DeleteRecipe'
 
 
 import { Route, Routes } from 'react-router-dom'
@@ -27,9 +28,10 @@ export default function Main () {
                 <Route path='reviewpost' element={<WriteReview/>}></Route>
                 <Route path='reviews' element={<Review/>}></Route>
                 <Route path='reviews/:id' element={<ReviewDetails/>}/>
-                <Route path="deletereview" element={<DeleteReview/>}/>
+                {/* <Route path="deletereview" element={<DeleteReview/>}/> */}
                 <Route path="displayrecipe/:id" element={<DisplayRecipe/>}/>
                 <Route path="/updaterecipe/:recipe_id" element={<UpdateRecipe />} />
+                {/* <Route path="deleterecipe" element={<DeleteRecipe/>}/> */}
             </Routes>
         </div>
     )

@@ -8,8 +8,8 @@ export default function DisplayRecipe () {
 
     let navigate = useNavigate()
 
-    const [recipe, setRecipe]= useState({})
-    const [user,setUser]=useState({})
+    const [recipe, setRecipe]= useState(null)
+    // const [user,setUser]=useState({})
 
     //can be removed, reviews now displaying through linked review component
         // const [reviews, setReviews] = useState([])
@@ -18,31 +18,39 @@ export default function DisplayRecipe () {
     let { id } = useParams() 
     useEffect(()=>{
         const getRecipe = async ()=>{
+            try{
             const response = await axios.get(`http://localhost:3001/api/recipes/${id}`);
-            
+        
             setRecipe(response.data)
 
-            const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
-            setUser(response2.data)
+            // const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
+            // setUser(response2.data)
 
         //can be removed, reviews now displaying through linked review component
             // const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
             // setReviews(response3.data)
             // console.log(`please hold`)
+        } catch(e){
+            console.log(`please hold`)
+        }
     };
 getRecipe()
 },[])
 
-
+//has issue with axios call, the controller merges two tables Recipes and Users causing a delay in promise. citing anything from associated table causes it to crash during the initial of the page
 const goToUpdate = () => {
     navigate(`/updaterecipe/${id}`)
 }
 
-console.log(recipe.id)
     return (
+        (!recipe)?
+        <h2>Loading...</h2>
+        :
         <div className="test-wrapper">
             <h3>Display Recipe</h3>
-            <h2>{recipe.name} by {user.username} </h2>
+            <h2>
+            {recipe.name} by {recipe.user.username} 
+            </h2>
             <button onClick={(event) => {
                 event.preventDefault()
                 goToUpdate()

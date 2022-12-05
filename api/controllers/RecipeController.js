@@ -1,4 +1,4 @@
-const { Recipe } = require('../models')
+const { Recipe, User, Review } = require('../models')
 
 // Route: (get) /api/recipes
 const GetAllRecipes = async (req, res) =>{ 
@@ -60,8 +60,17 @@ const GetIndividualRecipe = async (req, res) => {
       throw error
     }
   }
-
-
+// Route: (get) /api/recipes/:recipe_id
+  const getRecipeAndAffiliation = async (req, res) => {
+    try {
+        const recipeAndAffiliation = await Recipe.findByPk(req.params.recipe_id, {
+        include: [{ model: User, as: 'user' }]
+        })
+        res.send(recipeAndAffiliation)
+    } catch (error) {
+        throw error
+    }
+}
 
 
   
@@ -70,7 +79,8 @@ module.exports= {
     GetIndividualRecipe,
     CreateNewRecipe,
     UpdateRecipe,
-    DeleteRecipe
+    DeleteRecipe,
+    getRecipeAndAffiliation
 
    
   }

@@ -10,4 +10,8 @@ Router.put('/:user_id', controller.UpdateAccount)
 Router.get('/:user_id', controller.GetUserAndRecipes)
 
 
+//Auth Routes
+Router.post('/register', controller.Register)
+Router.post('/login', controller.Login)
+
 module.exports = Router

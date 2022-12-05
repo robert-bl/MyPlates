@@ -6,7 +6,8 @@ import axiosCreate from '../services/apiServices'
 
 export default function Review (props) {
     const [reviews, setReviews] = useState(null)
-
+    let finalAverage
+    
     useEffect(()=>{
         const getData= async()=>{
 
@@ -27,9 +28,29 @@ const showReviews=(reviews)=>{
     navigate(`/reviews/${reviews.id}`)
 }
 
+function getAverage(){
+    let box =[]
+    let averageAdd = 0
+    let penultAverage
+    reviews.map((review)=>{
+        box.push(review.rating)
+    })
+    for (let i = 0; i < box.length; i++) {
+        averageAdd += box[i]
+        penultAverage = averageAdd/(box.length)
+        finalAverage= Math.round(penultAverage * 100) / 100
+
+
+      }
+    
+    return finalAverage
+}
+
 
 if(reviews){
+    getAverage()
     return(
+        <div>
         <div>
         {
             reviews.map((review)=>(
@@ -40,7 +61,13 @@ if(reviews){
 
             </div>
             ))
+
+            
         }
+        </div>
+        <div>
+      <h2>This recipe has an average review of {finalAverage} stars</h2>
+        </div>
         </div>
     )
 

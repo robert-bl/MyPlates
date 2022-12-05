@@ -4,23 +4,23 @@ import Review from './Review'
 
 export default function RandomRecipe () {
 
-    const [recipe, setRecipe]= useState({})
-    const [user,setUser]=useState({})
-    let userId = recipe.user_id
+    const [recipe, setRecipe]= useState(null)
+    // const [user,setUser]=useState({})
+    // let userId = recipe.user_id
     //const [randomRecipe, setRandomRecipes]=[recipe[Math.floor(Math.random()*recipe.length)]]
 
 
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
-            // const response = await axios.get(`http://localhost:3001/api/recipes/`);
-            // const random = Math.floor(Math.random()*response.data.length) 
-            // setRecipe(response.data[random])
+            const response = await axios.get(`http://localhost:3001/api/recipes/`);
+            const random = Math.floor(Math.random()*response.data.length) 
+            setRecipe(response.data[random])
                     // test switch //
-            const response = await axios.get(`http://localhost:3001/api/recipes/1`);
-            setRecipe(response.data)
-            const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
-            setUser(response2.data)
+            // const response2 = await axios.get(`http://localhost:3001/api/recipes/1`);
+            // setRecipe(response.data)
+            // const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
+            // setUser(response2.data)
 
             // const response3= await axios.get(`http://localhost:3001/api/reviews/`)
         } catch(e){
@@ -29,13 +29,17 @@ export default function RandomRecipe () {
     };
 getRecipe()
 },[])
-
-    return (
+console.log(recipe)
+    return ( 
+        (!recipe)?
+    <h2>Loading...</h2>
+    :
         <div className="test-wrapper">
             <h3>random</h3>
-            <h2>{recipe.name} by {user.username} </h2>
+            <h2>{recipe.name} by {recipe.user.username} </h2>
             <p>{recipe.description}</p>
             <hr></hr>
+            <div className='display-ingredient'>
             <ul>
                 <div>{recipe.ingredient1}</div>
                 <div>{recipe.ingredient2}</div>
@@ -80,6 +84,7 @@ getRecipe()
                 <div>{recipe.measurement19}</div>
                 <div>{recipe.measurement20}</div>
             </ul>
+            </div>
             <p>{recipe.directions}</p>
             <div>
                 <Review/>

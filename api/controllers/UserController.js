@@ -141,7 +141,7 @@ const Login = async (req, res) => {
     ) {
       let payload = {
         id: user.id,
-        
+        username: user.username
       }
       let token = middleware.createToken(payload)
       return res.send({
@@ -157,6 +157,11 @@ const Login = async (req, res) => {
   }
 }
 
+const CheckSession = async (req, res) => {
+  const { payload } = res.locals
+  res.send(payload)
+}
+
   
 module.exports= {
     GetUserProfiles,
@@ -166,5 +171,6 @@ module.exports= {
     UpdateAccount,
     GetUserAndRecipes,
     Login,
-    Register
+    Register,
+    CheckSession
   }

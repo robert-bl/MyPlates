@@ -10,7 +10,7 @@ import UpdateRecipe from "./UpdateRecipe"
 export default function CreateRecipe () {
 
     //pull in user info to get user id
-    const { userInfo } = useContext(DataContext)
+    const { user } = useContext(DataContext)
 
     //initial form state for recipe
     const initialRecipeState = {
@@ -53,7 +53,7 @@ export default function CreateRecipe () {
     //posts createRecipeForm to the database
     const PostRecipe = async(data) => {
         try {
-            const response = await axiosCreate.post(`/api/recipes/${userInfo.userId}`, data)
+            const response = await axiosCreate.post(`/api/recipes/${user.id}`, data)
             return response.data
         } catch (error) {
             throw error
@@ -78,7 +78,7 @@ export default function CreateRecipe () {
             <h3>CreateRecipe</h3>
 
             {/* Tracks active user for testing, remove before deploymet */}
-            <h2>User {userInfo.userId}</h2>
+            <h2>User {user?user.id:''}</h2>
 
 
             <form onSubmit={handleSubmit}>

@@ -23,6 +23,8 @@ export default function SignIn () {
     const SignInUser = async (data) => {
         try {
             const response = await axiosCreate.post('/api/users/login', data)
+        //store token in local storage
+            localStorage.setItem('token', response.data.token)
             return response.data.user
         } catch (error) {
             throw error

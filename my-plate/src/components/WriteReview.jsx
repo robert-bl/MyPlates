@@ -6,11 +6,11 @@ import { DataContext } from "../DataContext"
 
 
 export default function WriteReview (props) {
-    const { userInfo } = useContext(DataContext)
+    const { user } = useContext(DataContext)
     // const { recipeInfo } = useContext(DataContext)
 
-  
-  const initialState = {
+
+const initialState = {
     rating: '',
     comment: ''
 }
@@ -20,7 +20,7 @@ const [reviewForm, setReviewForm] = useState(initialState)
 
 const EnterReview = async (data) => {
     try {
-        const response = await axiosCreate.post(`/api/reviews/${userInfo.userId}/${props.id}`, data)
+        const response = await axiosCreate.post(`/api/reviews/${user.id}/${props.id}`, data)
         return response.data
     } catch (error) {
         throw error
@@ -43,7 +43,7 @@ return (
         <h3>Write a review</h3>
 
         {/* Tracks active user for testing, remove before deploymet */}
-        <h4>User {userInfo.userId}</h4>
+        <h4>User {user?user.id:''}</h4>
 
         <form onSubmit={handleSubmit}>
             

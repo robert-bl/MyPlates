@@ -1,4 +1,4 @@
-const { Review } = require('../models')
+const { Review, User } = require('../models')
 
 const GetAllReviews= async (req, res) =>{ 
     try{
@@ -13,7 +13,15 @@ const GetAllReviews= async (req, res) =>{
 const GetReviewsByRecipe = async (req, res) => {
   try {
     let recipe = parseInt(req.params.recipe_id)
-    const reviews = await Review.findAll({where : {recipeId: recipe}})
+    const reviews = await Review.findAll({
+      
+      where : {recipeId: recipe},
+      include: [{model: User, as:'user', attributes:['username']}]
+
+    }
+      
+    
+      )
     res.send(reviews)
   } catch (error) {
     throw error
@@ -21,10 +29,19 @@ const GetReviewsByRecipe = async (req, res) => {
 }
 
 
+
+
+
+
+
 const GetIndividualReview = async (req, res) => {
     try {
-      const review = await Review.findByPk(req.params.review_id
+      const review = await Review.findByPk(req.params.review_id, 
+        {include: [{model: User, as:'user', attributes:['username']}]}
       )
+
+      
+
       res.send(review)
     } catch (error) {
       throw error

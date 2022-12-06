@@ -2,7 +2,7 @@ const Router = require('express').Router()
 const controller = require('../controllers/UserController')
 const middleware = require('../middleware')
 
-// Router.get('/', controller.GetUserProfiles)
+Router.get('/profiles', controller.GetUserProfiles)
 // Router.get('/:user_id', controller.GetIndividualUserProfile)
 // Router.post('/', controller.CreateNewUser)
 Router.delete('/:user_id', controller.DeleteAccount)

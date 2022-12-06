@@ -67,8 +67,7 @@ const GetAllRecipesAndAffiliation = async (req, res) =>{
 
   
 module.exports= {
-    GetAllRecipes,
-    GetIndividualRecipe,
+   
     CreateNewRecipe,
     UpdateRecipe,
     DeleteRecipe,

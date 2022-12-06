@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
 import DeleteRecipe from './DeleteRecipe'
-import ReviewDetails from './ReviewDetails'
 
 export default function DisplayRecipe () {
 
@@ -32,6 +31,7 @@ export default function DisplayRecipe () {
             // const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
             // setReviews(response3.data)
             // console.log(`please hold`)
+            
         } catch(e){
             console.log(`please hold`)
         }

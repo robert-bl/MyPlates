@@ -10,7 +10,7 @@ export default function UserPage () {
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
-            const response = await axios.get(`http://localhost:3001/api/users/${id}`);
+            const response = await axios.get(`http://localhost:3001/api/users/get-user-and-recipes/${id}`);
         
             setUser(response.data)
             console.log(response)
@@ -44,5 +44,17 @@ return (
         </div>
     </div>
 )
+
+//Sample Auth protection code
+// return (user && authenticated) ? (
+//     <div>
+//         <h1>Display</h1>
+//     </div>
+// ) : (
+//     <div>
+//         <h1>Protected</h1>
+//         <button>Navigate to login</button>
+//     </div>
+// )
 
 }

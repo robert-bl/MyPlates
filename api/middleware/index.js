@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const jwt = require ('jsonwebtoken')
 require('dotenv').config()
+
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECRET = process.env.APP_SECRET
 
@@ -13,11 +14,11 @@ const hashPassword = async(password)=> {
 }
 
 const comparePassword = async(password, storedPassword) => {
-  // Accepts the password provided in the login request and the currently stored password
-  // Compares the two passwords for a match
+    // Accepts the password provided in the login request and the currently stored password
+     // Compares the two passwords for a match
     let passwordMatch = await bcrypt.compare(password, storedPassword)
-  // returns boolean: true if the passwords match
-  // returns false if the passwords are not a match
+    //   returns true if the passwords match
+    // returns false if the passwords are not a match
     return passwordMatch
 }
 const createToken = (payload) => {
@@ -26,18 +27,17 @@ const createToken = (payload) => {
     //   Generates the token and encrypts it, returns the token when the process finishes
     return token
 }
-
 const verifyToken = (req, res, next) => {
     const { token } = res.locals
     //   Gets the token stored in the request lifecycle state
     try {
         let payload = jwt.verify(token, APP_SECRET)
-        //   Verifys the token is legit
+    //   Verifys the token is legit
         if (payload){
             res.locals.payload = payload
-        // Passes the decoded payload to the next function
+    // Passes the decoded payload to the next function
             return next()
-        //   Calls the next function if the token is valid
+    //   Calls the next function if the token is valid
         }
         res.status(401).send({status: 'error', msg: 'unauthorized, payload'})
     } catch (error) {
@@ -47,15 +47,14 @@ const verifyToken = (req, res, next) => {
         })
     }
 }
-
 const stripToken = (req,res, next) => {
     try {
         const token = req.headers['authorization'].split(' ')[1]
-        // Gets the token from the request headers {authorization: Bearer Some-Token}
-        // Splits the value of the authorization header
+    // Gets the token from the request headers {authorization: Bearer Some-Token}
+    // Splits the value of the authorization header
         if (token) {
             res.locals.token = token
-        //   If the token exists we add it to the request lifecycle state
+    //   If the token exists we add it to the request lifecycle state
             return next()
         }
     } catch (error) {
@@ -72,3 +71,5 @@ module.exports = {
     comparePassword,
     hashPassword
 }
+
+//comment

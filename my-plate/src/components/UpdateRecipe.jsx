@@ -98,19 +98,19 @@ export default function UpdateRecipe () {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>
-                    <input type="text" id="name" onChange={handleChange} placeholder="placeholder" value={recipeInfo.name}></input>
+                    <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="placeholder" value={recipeInfo.name}></input>
                 </div>
                 <div>
                 <label htmlFor="">Description:</label>
-                <input type="text" id="description" onChange={handleChange}placeholder="placeholder" value={recipeInfo.description}></input>
+                <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={recipeInfo.description}></input>
                 </div>
                 <div>
                 <label htmlFor="">Ingredients:</label>                    
                     {ingredientNumber.map((e) => 
                         <div key={e}>
                             <label htmlFor="">Ingredient:</label>
-                            <input type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={recipeInfo['ingredient' + e]}></input>
-                            <label htmlFor="">Ammount:</label>
+                            <input style={{width: "300px"}} type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={recipeInfo['ingredient' + e]}></input>
+                            <label htmlFor="">Amount:</label>
                             <input type="text" id={'measurement' + e} onChange={handleChange}placeholder="placeholder" value={recipeInfo['measurement' + e]}></input>
                         </div>
                         )}
@@ -123,7 +123,7 @@ export default function UpdateRecipe () {
                 </div>
                 <div>
                 <label htmlFor="">Directions:</label>
-                <input type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={recipeInfo.directions}></input>
+                <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={recipeInfo.directions}></input>
                 </div>
                 <button type="submit">Update Recipe</button>
             </form>

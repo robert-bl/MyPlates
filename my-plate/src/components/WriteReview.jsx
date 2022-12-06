@@ -67,7 +67,7 @@ return (
           </select>
    
             <label>Write your opinion on this recipe:</label>
-            <input type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
+            <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
             <button type="submit">Submit</button>
         </form>
     </div>

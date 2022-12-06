@@ -2,7 +2,7 @@ const Router = require('express').Router()
 const controller = require('../controllers/RecipeController')
 const middleware = require('../middleware')
 
-Router.get('/', controller.GetAllRecipes)
+Router.get('/', controller.GetAllRecipesAndAffiliation)
 
 //Router.get('/:recipe_id', controller.GetIndividualRecipe)
 Router.get('/:recipe_id', controller.getRecipeAndAffiliation)

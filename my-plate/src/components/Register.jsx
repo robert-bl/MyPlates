@@ -11,7 +11,7 @@ export default function Register () {
     //Blank form state
     const initialState = {
         username: '',
-        undPassword: '',
+        password: '',
         // confirmPassword: ''
     }
 

@@ -14,7 +14,7 @@ export default function SignIn () {
 
     const initialFormState = {
         username: '',
-        undPassword: '',
+        password: '',
     }
 
     const [formInput, setFormInput] = useState(initialFormState)
@@ -70,7 +70,7 @@ export default function SignIn () {
                             id="username"
                             type="text"
                             placeholder="username"
-                            value={formInput.unsername}
+                            value={formInput.username}
                             required
                         />
                     </div>
@@ -79,8 +79,8 @@ export default function SignIn () {
                         <input
                             onChange={handleChange}
                             type="password"
-                            id="undPassword"
-                            value={formInput.undPassword}
+                            id="password"
+                            value={formInput.password}
                             required
                         />
                     </div>

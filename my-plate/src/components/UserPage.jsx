@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import {useParams, useNavigate} from "react-router-dom"
+import { Link, useParams, useNavigate} from "react-router-dom"
 
 export default function UserPage () {
     const [user,setUser]=useState(null)
@@ -34,6 +34,8 @@ return (
     <div className="test-wrapper">
         <h3>User's Page</h3>
         <h2>Welcome to {user.username}'s cookbook </h2>
+        <hr></hr>
+        <Link to="/createrecipe">Post a New Recipe</Link>
         <hr></hr>
         <div>
             {

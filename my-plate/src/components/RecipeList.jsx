@@ -13,8 +13,10 @@ export default function RecipeList () {
             const response = await axios.get(`http://localhost:3001/api/recipes/`);
             setRecipe(response.data)
 
+
             // const response2= await axios.get(`http://localhost:3001/api/users/`)
             // setUser(response2.data)
+
             // const response3= await axios.get(`http://localhost:3001/api/reviews/`)
         } catch(e){
             console.log(`please hold`)

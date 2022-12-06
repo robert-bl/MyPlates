@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import{ useState, useEffect } from 'react'
 import axiosCreate from '../services/apiServices'
-
+import { FaStar } from 'react-icons/fa'
 
 
 export default function Review (props) {
@@ -60,7 +60,6 @@ function getAverage(){
 
 
       }
-    console.log(finalAverage)
     return finalAverage
 }
 
@@ -69,22 +68,7 @@ if(reviews){
     getAverage()
     return(
         <div>
-        <div>
-        {
-            reviews.map((review)=>(
-            <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
-
-            <h2>Current recipe has an user Id of {review.user_id} and recipe id of {review.recipe_id}. Reviewer states that the recipe was {review.rating} out of 5 and they said that {review.comment}  </h2>
-
-
-            </div>
-            ))
-
-            
-        }
-        </div>
-
-        <div>
+            <div>
     {
          (() => {
             if(finalAverage===0) {
@@ -94,17 +78,29 @@ if(reviews){
                 
                 } else {
                     return (
-                        <h1>This recipe has an average review of {finalAverage} stars</h1> 
+                        <h1>This recipe has an average review of {finalAverage} <FaStar size={30} color="gold"/> stars</h1> 
                     )
                 }
         })()  
     }
             
-        {/* {
-        
-        {finalAverage}=== 0 ? <h1>No current reviews</h1>: <h1>This recipe has an average review of {finalAverage} stars</h1> } */}
-        
         </div>
+        <div>
+        {
+            reviews.map((review)=>(
+            <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
+
+            <h2>Current recipe has an user Id of {review.user_id} and recipe id of {review.recipe_id}. Reviewer states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/> and they said that {review.comment}  </h2>
+
+
+            </div>
+            ))
+
+            
+        }
+        </div>
+
+    
         </div>
     )
 

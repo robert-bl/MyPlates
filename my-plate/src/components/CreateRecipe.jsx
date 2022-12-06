@@ -12,7 +12,7 @@ export default function CreateRecipe () {
     let navigate=useNavigate()
 
     //pull in user info to get user id
-    const { userInfo } = useContext(DataContext)
+    const { user } = useContext(DataContext)
 
     //initial form state for recipe
     const initialRecipeState = {
@@ -55,7 +55,7 @@ export default function CreateRecipe () {
     //posts createRecipeForm to the database
     const PostRecipe = async(data) => {
         try {
-            const response = await axiosCreate.post(`/api/recipes/${userInfo.userId}`, data)
+            const response = await axiosCreate.post(`/api/recipes/${user.id}`, data)
             return response.data
         } catch (error) {
             throw error
@@ -81,24 +81,24 @@ export default function CreateRecipe () {
             <h3>CreateRecipe</h3>
 
             {/* Tracks active user for testing, remove before deploymet */}
-            <h2>User {userInfo.userId}</h2>
+            <h2>User {user?user.id:''}</h2>
 
 
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>
-                    <input type="text" id="name" onChange={handleChange} placeholder="placeholder" value={createRecipeForm.name}></input>
+                    <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="placeholder" value={createRecipeForm.name}></input>
                 </div>
                 <div>
                 <label htmlFor="">Description:</label>
-                <input type="text" id="description" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.description}></input>
+                <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.description}></input>
                 </div>
                 <div>
                 <label htmlFor="">Ingredients:</label>                    
                     {ingredientNumber.map((e) => 
                         <div key={e}>
                             <label htmlFor="">Ingredient:</label>
-                            <input type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm['ingredient' + e]}></input>
+                            <input style={{width: "300px" }} type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm['ingredient' + e]}></input>
                             <label htmlFor="">Amount:</label>
                             <input type="text" id={'measurement' + e} onChange={handleChange}placeholder="placeholder" value={createRecipeForm['measurement' + e]}></input>
                         </div>
@@ -112,7 +112,7 @@ export default function CreateRecipe () {
                 </div>
                 <div>
                 <label htmlFor="">Directions:</label>
-                <input type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.directions}></input>
+                <input type="text" style={{width: "500px", paddingBottom:"100px" }} id="directions" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.directions}></input>
                 </div>
                 <button type="submit">Post Recipe</button>
             </form>

@@ -7,27 +7,27 @@ module.exports = {
     [
       {
         username: 'CaptainCook',
-        password: 'arg',
+        passwordDigest: 'arg',
         image: null,
       },
       {
         username: 'MaryPopoff',
-        password: 'mmm',
+        passwordDigest: 'mmm',
         image: null,
       },
       {
         username: 'AlphaBetSoup',
-        password: 'abc',
+        passwordDigest: 'abc',
         image: null,
       },
       {
         username: 'SendNoodles',
-        password: 'ramen',
+        passwordDigest: 'ramen',
         image: null,
       },
       {
         username: 'Snackums',
-        password: 'honeybun',
+        passwordDigest: 'honeybun',
         image: null,
       },
     ]);

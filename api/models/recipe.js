@@ -78,7 +78,8 @@ module.exports = (sequelize, DataTypes) => {
     measurement18:DataTypes.STRING,
     measurement19:DataTypes.STRING,
     measurement20:DataTypes.STRING,
-    image: DataTypes.BLOB
+    image: DataTypes.BLOB,
+    imageUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Recipe',

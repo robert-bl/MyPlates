@@ -1,14 +1,18 @@
 import axios from 'axios'
 import {React, useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
 import DeleteRecipe from './DeleteRecipe'
 import ReviewDetails from './ReviewDetails'
+import { useContext } from "react"
+import { DataContext } from "../DataContext"
 
 export default function DisplayRecipe () {
 
     let navigate = useNavigate()
+
+    const { user } = useContext(DataContext)
 
     const [recipe, setRecipe]= useState(null)
     // const [user,setUser]=useState({})
@@ -39,6 +43,7 @@ export default function DisplayRecipe () {
 getRecipe()
 },[])
 
+
 //has issue with axios call, the controller merges two tables Recipes and Users causing a delay in promise. citing anything from associated table causes it to crash during the initial of the page
 const goToUpdate = () => {
     navigate(`/updaterecipe/${id}`)
@@ -53,10 +58,17 @@ const goToUpdate = () => {
             <h2>
             {recipe.name} by {recipe.user.username} 
             </h2>
+
+            {!user? <h4>Login to edit</h4>:(user.id === recipe.userId ?
             <button onClick={(event) => {
                 event.preventDefault()
                 goToUpdate()
             }}>Update Recipe</button>
+            :
+            <h4>Login to edit</h4>
+            )}
+            
+
             <p>{recipe.description}</p>
             <hr></hr>
             <ul>
@@ -146,8 +158,15 @@ const goToUpdate = () => {
             <h2>show reviews here</h2>
             <Review recipe_id={recipe.id} />
              {/* <button><Link to='/reviews' className="link">Check reviews</Link></button> */}
-            <WriteReview id={id} />
+
+            {!user ? <Link to="/login" className="link">Login to write a review</Link> : <WriteReview id={id} />}
+            
+            {!user ? null:(user.id === recipe.userId ?
             <DeleteRecipe id={id}/>
+            :
+            null
+            )}
+            
         </div>
     )
 }

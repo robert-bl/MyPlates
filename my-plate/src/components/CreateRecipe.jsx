@@ -81,7 +81,7 @@ export default function CreateRecipe () {
             <h3>CreateRecipe</h3>
 
             {/* Tracks active user for testing, remove before deploymet */}
-            <h2>User {user?user.id:''}</h2>
+            <h2>User {user?user.username:''}</h2>
 
 
             <form onSubmit={handleSubmit}>

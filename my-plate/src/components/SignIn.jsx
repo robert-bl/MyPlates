@@ -16,7 +16,7 @@ export default function SignIn (props) {
 
     const initialFormState = {
         username: '',
-        password: '',
+        password: ''
     }
 
     const [formInput, setFormInput] = useState(initialFormState)
@@ -52,7 +52,6 @@ export default function SignIn (props) {
         <div className="test-wrapper">
             <h3>SignIn</h3>
 
-            
 
             <div className="card-overlay centered">
                 <form className="col" onSubmit={handleSubmit}>

@@ -95,10 +95,11 @@ const Login = async (req, res) => {
       where: {username : req.body.username},
       raw: true
     })
+    console.log(user !== null)
     if (
       user &&
       //check password vs passwordDigest vs undPassword
-      middleware.comparePassword(user.passwordDigest, req.body.password)
+      (await middleware.comparePassword(req.body.password, user.passwordDigest))
     ) {
       let payload = {
         id: user.id,
@@ -108,6 +109,8 @@ const Login = async (req, res) => {
       return res.send({
         user: payload, token
       })
+    } else {
+      console.log('user and/or compare false')
     }
     res.status(401).send({
       status: 'error',

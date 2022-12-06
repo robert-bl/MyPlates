@@ -8,6 +8,7 @@ import ReviewDetails from './ReviewDetails'
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
 
+
 export default function DisplayRecipe () {
 
     let navigate = useNavigate()
@@ -36,6 +37,7 @@ export default function DisplayRecipe () {
             // const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
             // setReviews(response3.data)
             // console.log(`please hold`)
+            
         } catch(e){
             console.log(`please hold`)
         }

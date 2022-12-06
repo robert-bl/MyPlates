@@ -9,7 +9,7 @@ import { FaStar } from 'react-icons/fa'
 
 
 
-export default function ReviewDetails (props) {
+export default function ReviewDetails () {
         let { id } = useParams()
         let navigate = useNavigate()
 
@@ -21,14 +21,9 @@ export default function ReviewDetails (props) {
         const [reviews, setReviews] = useState('')
        
         const getReviews= async ()=>{
-            const response =await axiosCreate.get('/api/reviews/')
+            const response =await axiosCreate.get(`/api/reviews/${id}`)
             setReviews(response.data)
             
-       
-          
-          let selectedReviews =response.data.find(reviews=>reviews.id==id)
-          
-          setReviews(selectedReviews)
           
           }
     
@@ -37,13 +32,15 @@ export default function ReviewDetails (props) {
             
           },[])
       
+          console.log(reviews)
+
           
         return (reviews) ? (
         <div className="reviewdetail">{
     
             
                 <div key={reviews.id}>
-                    <h2>Current recipe has an user Id of {reviews.user_id} and review id of {reviews.recipe_id}. Reviewer states that the recipe was {reviews.rating} out of 5 <FaStar size={20} color="gold" /> and they said that {reviews.comment}  </h2>
+                    <h2> {reviews.user.username} states that the recipe was {reviews.rating} out of 5 <FaStar size={20} color="gold" /> and they said that {reviews.comment}  </h2>
                 
     
                  </div>

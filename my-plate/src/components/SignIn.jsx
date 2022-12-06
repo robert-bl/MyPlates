@@ -4,8 +4,10 @@ import { DataContext } from "../DataContext"
 import axiosCreate from "../services/apiServices"
 
 
-export default function SignIn () {
+export default function SignIn (props) {
 
+
+    
     let navigate = useNavigate()
 
     // const { userInfo, setUserInfo } = useContext(DataContext)
@@ -44,6 +46,7 @@ export default function SignIn () {
         toggleAuthenticated(true)
         navigate('/')
     }
+
 
     return (
         <div className="test-wrapper">

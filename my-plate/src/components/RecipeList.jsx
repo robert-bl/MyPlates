@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 
 export default function RecipeList () {
     const [recipe, setRecipe]= useState([])
-    const [user,setUser]=useState([])
+    // const [user,setUser]=useState([])
     //let userId = recipe.user_id
     const navigate = useNavigate();
     useEffect(()=>{
@@ -15,8 +15,8 @@ export default function RecipeList () {
            // const response2= await axios.get(`http://localhost:3001/api/users/`)
             // setUser(response2.data)
 
-            const response2= await axios.get(`http://localhost:3001/api/users/profiles`)
-            setUser(response2.data)
+            // const response2= await axios.get(`http://localhost:3001/api/users/profiles`)
+            // setUser(response2.data)
             // const response3= await axios.get(`http://localhost:3001/api/reviews/`)
         } catch(e){
             console.log(`please hold`)

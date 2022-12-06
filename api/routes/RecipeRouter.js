@@ -4,7 +4,6 @@ const middleware = require('../middleware')
 
 Router.get('/', controller.GetAllRecipesAndAffiliation)
 
-//Router.get('/:recipe_id', controller.GetIndividualRecipe)
 Router.get('/:recipe_id', controller.getRecipeAndAffiliation)
 
 //Auth routes

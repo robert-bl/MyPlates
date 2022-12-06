@@ -16,7 +16,7 @@ export default function RandomRecipe () {
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/recipes/`);
-            const random = Math.floor(Math.random()*response.data.length) 
+            const random = Math.ceil(Math.random()*response.data.length) 
             setRecipe(response.data[random])
             navigate(`/displayrecipe/${random}`)
                     // test switch //
@@ -32,7 +32,6 @@ export default function RandomRecipe () {
     };
 getRecipe()
 },[])
-console.log(recipe)
     return ( 
         (!recipe)?
     <h2>Loading...</h2>

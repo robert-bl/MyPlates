@@ -1,14 +1,16 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Review from './Review'
+import { useNavigate } from 'react-router-dom'
 
 export default function RandomRecipe () {
 
+    const navigate = useNavigate()
     const [recipe, setRecipe]= useState(null)
     // const [user,setUser]=useState({})
     // let userId = recipe.user_id
     //const [randomRecipe, setRandomRecipes]=[recipe[Math.floor(Math.random()*recipe.length)]]
-
+  
 
     useEffect(()=>{
         const getRecipe = async ()=>{
@@ -16,6 +18,7 @@ export default function RandomRecipe () {
             const response = await axios.get(`http://localhost:3001/api/recipes/`);
             const random = Math.floor(Math.random()*response.data.length) 
             setRecipe(response.data[random])
+            navigate(`/displayrecipe/${random}`)
                     // test switch //
             // const response2 = await axios.get(`http://localhost:3001/api/recipes/1`);
             // setRecipe(response.data)

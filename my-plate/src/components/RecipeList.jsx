@@ -35,6 +35,7 @@ const goToUser = (x)=>{
     navigate(`/user/${x.user.id}`)
 }
 
+console.log(recipe)
 // console.log(user[1])
 // console.log(user)
     return (

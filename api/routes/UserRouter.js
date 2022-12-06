@@ -20,4 +20,8 @@ Router.get('/session',
     )
 
 
+//Auth Routes
+Router.post('/register', controller.Register)
+Router.post('/login', controller.Login)
+
 module.exports = Router

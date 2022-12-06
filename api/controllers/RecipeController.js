@@ -72,6 +72,18 @@ const GetIndividualRecipe = async (req, res) => {
     }
 }
 
+// Route: (get) /api/recipes
+const GetAllRecipesAndAffiliation = async (req, res) =>{ 
+  try{
+      const recipes = await Recipe.findAll({
+        include:[{model:User, as:'user'}]
+      })
+      res.send(recipes)
+  } catch (error){
+      throw error
+  }
+}
+
 
   
 module.exports= {
@@ -80,7 +92,8 @@ module.exports= {
     CreateNewRecipe,
     UpdateRecipe,
     DeleteRecipe,
-    getRecipeAndAffiliation
+    getRecipeAndAffiliation,
+    GetAllRecipesAndAffiliation
 
    
   }

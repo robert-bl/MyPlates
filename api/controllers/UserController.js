@@ -72,6 +72,7 @@ const GetIndividualUserProfile = async (req, res) => {
 }
 
 
+
 //Auth Controllers
 
 
@@ -128,6 +129,7 @@ const Register = async (req, res) => {
 //   }
 // }
 
+
 const Login = async (req, res) => {
   try {
     const user = await User.findOne({
@@ -136,7 +138,9 @@ const Login = async (req, res) => {
     })
     if (
       user &&
+
       //check password vs passwordDigest vs undPassword
+
       middleware.comparePassword(user.password, req.body.undPassword)
     ) {
       let payload = {
@@ -157,10 +161,12 @@ const Login = async (req, res) => {
   }
 }
 
+
 const CheckSession = async (req, res) => {
   const { payload } = res.locals
   res.send(payload)
 }
+
 
   
 module.exports= {
@@ -173,4 +179,4 @@ module.exports= {
     Login,
     Register,
     CheckSession
-  }
+}

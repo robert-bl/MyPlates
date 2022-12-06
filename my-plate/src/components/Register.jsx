@@ -50,8 +50,10 @@ export default function Register () {
                 <input type="text" id="username" onChange={handleChange} value={registerForm.username}></input>
                 <label>Password:</label>
                 <input type="password" id="password" onChange={handleChange} value={registerForm.password}></input>
+
                 {/* <label>Confirm Password:</label>
                 <input type="password" id="confirmPassword" onChange={handleChange} value={registerForm.confirmPassword}></input> */}
+
                 <button type="submit">Submit</button>
             </form>
             <button><Link to="/login" className="link">Already a member? Sign in here</Link></button>

@@ -2,12 +2,14 @@ import { useState } from "react"
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
 import axiosCreate from "../services/apiServices"
+import { useNavigate } from "react-router-dom"
 
 //test
 import UpdateRecipe from "./UpdateRecipe"
 
 
 export default function CreateRecipe () {
+    let navigate=useNavigate()
 
     //pull in user info to get user id
     const { user } = useContext(DataContext)
@@ -71,6 +73,7 @@ export default function CreateRecipe () {
         await PostRecipe(createRecipeForm)
         setCreateRecipeForm(initialRecipeState)
         setIngredientNumber([1])
+        navigate(`/recipelist`)
     }
 
     return (

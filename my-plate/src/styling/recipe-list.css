@@ -3,7 +3,8 @@
     text-align: left;
     width: 80vw;
     margin-left: 10vw;
-    background-color: #F3FCF2;
+    background-color: #E6F4F1;
+    color: #00364A;
 }
 
 .recipe-list {
@@ -15,9 +16,9 @@
 
 .recipe-list-item {
     width: 80vw;
-    border-top: 2px solid #789974;
-    background-color: #F6EDD9;
-    color: black;
+    border-top: 2px solid #A04100;
+    background-color: #E6F4F1;
+    color: #00364A;
 }
 
 .recipe-list-item-title {

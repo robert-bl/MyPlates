@@ -8,6 +8,12 @@
   background-color: aliceblue;
 }
 
+a {
+  text-decoration: none;
+}
+
+
+
 
 /*header*/
 .header{
@@ -23,8 +29,7 @@
 /*NavBar*/
 
 .nav{
-  background-color: white;
-  color:crimson
+  background-color: #A04100;
 }
 
 .navbar-links {

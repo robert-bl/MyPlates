@@ -1,0 +1,34 @@
+
+.recipe-list-page {
+    text-align: left;
+    width: 80vw;
+    margin-left: 10vw;
+    background-color: #F3FCF2;
+}
+
+.recipe-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.recipe-list-item {
+    width: 80vw;
+    border-top: 2px solid #789974;
+    background-color: #F6EDD9;
+    color: black;
+}
+
+.recipe-list-item-title {
+    font-size: 30px;
+
+}
+
+.recipe-list-item-user {
+    font-size: 12px;
+    margin-top: -10px;
+    margin-left: 5px
+
+}
+

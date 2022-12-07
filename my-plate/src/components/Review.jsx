@@ -43,7 +43,7 @@ function getAverage(){
         finalAverage= Math.round(penultAverage * 100) / 100
 
 
-      }
+    }
 
     return finalAverage
 }
@@ -61,7 +61,7 @@ function getAverage(){
         finalAverage= Math.round(penultAverage * 100) / 100
 
 
-      }
+    }
     return finalAverage
 }
 
@@ -72,7 +72,7 @@ if(reviews){
         <div>
             <div>
     {
-         (() => {
+        (() => {
             if(finalAverage===0) {
                     return (
                         <h1>No current reviews</h1>

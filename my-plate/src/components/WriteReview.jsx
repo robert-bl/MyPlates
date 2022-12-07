@@ -52,7 +52,7 @@ return (
         <h3>Write a review</h3>
 
         {/* Tracks active user for testing, remove before deploymet */}
-        <h4>User {user?user.id:''}</h4>
+        <h4>User {user?user.username:''}</h4>
 
         <form onSubmit={handleSubmit}>
             
@@ -65,8 +65,8 @@ return (
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select>
-   
+            </select>
+
             <label>Write your opinion on this recipe:</label>
             <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
             <button type="submit">Submit</button>

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import{ useState, useEffect } from 'react'
 import axiosCreate from '../services/apiServices'
 import { FaStar } from 'react-icons/fa'
+import '../styling/recipe-and-review.css'
 
 
 export default function Review (props) {
@@ -75,26 +76,25 @@ if(reviews){
         (() => {
             if(finalAverage===0) {
                     return (
-                        <h1>No current reviews</h1>
+                        <div>No current reviews</div>
                     )
                 
                 } else {
                     return (
-                        <h1>This recipe has an average review of {finalAverage} <FaStar size={30} color="gold"/> stars</h1> 
+                        <div className='rating-average'>This recipe has an average review of {finalAverage} <FaStar size={30} color="gold"/> stars</div> 
                     )
                 }
         })()  
     }
             
         </div>
-        <div>
+        <div className='reviews'>
+        <div>Reviews:</div>
         {
             reviews.map((review)=>(
             <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
 
-            <h2>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/> and they said that {review.comment}  </h2>
-
-
+            <div>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/> and they said that {review.comment}  </div>
             </div>
             ))
 

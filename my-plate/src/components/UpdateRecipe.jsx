@@ -33,7 +33,6 @@ export default function UpdateRecipe () {
             let testNullArr = []
             let entryExists = true
             for (let i = 1; entryExists && i < 21; i++) {
-                console.log(response.data[`ingredient${i}`])
                 if (response.data[`ingredient${i}`] !== null) {
                     testNullArr.push(i)
                 } else {
@@ -102,7 +101,7 @@ export default function UpdateRecipe () {
                 </div>
                 <div>
                 <label htmlFor="">Description:</label>
-                <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={recipeInfo.description}></input>
+                <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={recipeInfo.description}></textarea>
                 </div>
                 <div>
                 <label htmlFor="">Ingredients:</label>                    
@@ -123,7 +122,7 @@ export default function UpdateRecipe () {
                 </div>
                 <div>
                 <label htmlFor="">Directions:</label>
-                <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={recipeInfo.directions}></input>
+                <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={recipeInfo.directions}></textarea>
                 </div>
                 <button type="submit">Update Recipe</button>
             </form>

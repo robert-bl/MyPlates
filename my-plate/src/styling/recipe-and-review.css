@@ -1,0 +1,36 @@
+/*display recipe*/
+
+.recipe-title {
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+
+.ingredients-direction-wrapper {
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    justify-content: center;
+}
+
+.display-ingredient {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ingredient-spacer {
+    margin: 0 7px 0 7px
+}
+
+.description-wrapper {
+    margin: 50px;
+}
+
+/*reviews*/
+
+.rating-average {
+    font-size: 20px;
+}
+
+
+

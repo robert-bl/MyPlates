@@ -5,36 +5,12 @@
 .App {
   font-family: 'Mukta', sans-serif;
   text-align: center;
-  background-color: aliceblue;
 }
 
-a {
+/* Styling for links with link class */
+.link {
   text-decoration: none;
-}
-
-
-
-
-/*header*/
-.header{
-  text-align: center;
-  font-size: 120px;
-  color: darkorange;
-}
-.headerbackground{
-  background-image: url("https://i.redd.it/hwnveiz6u7t61.jpg");
-  background-position: center;
-}
-
-/*NavBar*/
-
-.nav{
-  background-color: #A04100;
-}
-
-.navbar-links {
-  display: flex;
-  justify-content: space-around;
+  color: black;
 }
 
 /*Landing*/
@@ -45,8 +21,4 @@ a {
   color: purple;
 }
 
-/*Display Recipe*/
-.display-ingredient {
-  display: flex;
-  justify-content: space-around;
-}
+

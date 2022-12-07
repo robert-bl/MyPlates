@@ -91,7 +91,7 @@ export default function CreateRecipe () {
                 </div>
                 <div>
                 <label htmlFor="">Description:</label>
-                <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.description}></input>
+                <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.description}></textarea>
                 </div>
                 <div>
                 <label htmlFor="">Ingredients:</label>                    
@@ -112,7 +112,7 @@ export default function CreateRecipe () {
                 </div>
                 <div>
                 <label htmlFor="">Directions:</label>
-                <input type="text" style={{width: "500px", paddingBottom:"100px" }} id="directions" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.directions}></input>
+                <textarea type="text" style={{width: "500px", paddingBottom:"100px" }} id="directions" onChange={handleChange}placeholder="placeholder" value={createRecipeForm.directions}></textarea>
                 </div>
                 <button type="submit">Post Recipe</button>
             </form>

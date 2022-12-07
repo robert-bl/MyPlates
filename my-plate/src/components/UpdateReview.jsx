@@ -54,22 +54,19 @@ return (
             
             <label>Enter a number out of 5:</label>
             
-            <select type='text' id='rating' value={reviewForm.rating} onChange={handleChange2}>
+        <select type='text' id='rating' value={reviewForm.rating} onChange={handleChange2}>
             
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select>
-   
+        </select>
+
             <label>Rewrite your opinion on this recipe:</label>
-            <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
+            <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></textarea>
             <button type="submit" >Submit</button>
-            
-    
         </form>
-     
     </div>
 
 )

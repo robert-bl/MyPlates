@@ -16,8 +16,10 @@ export default function RandomRecipe () {
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/recipes/`);
+
             console.log(response)
             const random = Math.floor(Math.random()*response.data.length) 
+            
             setRecipe(response.data[random])
             navigate(`/displayrecipe/${recipe.id}`)
                     // test switch //
@@ -32,6 +34,7 @@ export default function RandomRecipe () {
         }
     };
 getRecipe()
+
 },[recipe])
 
 

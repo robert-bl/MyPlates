@@ -2,11 +2,18 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate} from "react-router-dom"
 
+import { useContext } from "react"
+import { DataContext } from "../DataContext"
+
 export default function UserPage () {
     const [user,setUser]=useState(null)
     const navigate = useNavigate();
     let {id}=useParams()
+    let verified = false
 
+    // const verification = ()=>{
+    //     if (user===null || )
+    // }
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{

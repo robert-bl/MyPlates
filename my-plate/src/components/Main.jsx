@@ -21,7 +21,7 @@ export default function Main () {
 
     
     return (
-        <div className="test-wrapper">
+        <div className="main-wrapper">
             <Routes>
                 <Route path="/" element={<Landing />}/>
                 <Route path="/register" element={<Register />}/>

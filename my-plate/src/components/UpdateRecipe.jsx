@@ -33,7 +33,6 @@ export default function UpdateRecipe () {
             let testNullArr = []
             let entryExists = true
             for (let i = 1; entryExists && i < 21; i++) {
-                console.log(response.data[`ingredient${i}`])
                 if (response.data[`ingredient${i}`] !== null) {
                     testNullArr.push(i)
                 } else {

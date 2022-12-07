@@ -49,10 +49,10 @@ const handleSubmit = async (event) => {
 
 return (
     <div className="test-wrapper">
-        <h3>Write a review</h3>
-
-        {/* Tracks active user for testing, remove before deploymet */}
-        <h4>User {user?user.username:''}</h4>
+        <div className="prompt-review">
+            
+        <div>Write a review as {user?user.username:''}</div>
+        </div>
 
         <form onSubmit={handleSubmit}>
             
@@ -68,7 +68,7 @@ return (
             </select>
 
             <label>Write your opinion on this recipe:</label>
-            <input style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></input>
+            <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></textarea>
             <button type="submit">Submit</button>
         </form>
     </div>

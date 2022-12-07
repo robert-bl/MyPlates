@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { DataContext } from './DataContext';
 import Header from './components/Header'
 import Main from './components/Main'
-import './App.css';
+import './styling/App.css';
 import axiosCreate from './services/apiServices';
 
 function App() {

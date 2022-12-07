@@ -6,11 +6,15 @@ import DeleteReview from './DeleteReview'
 import UpdateReview from './UpdateReview'
 import { useNavigate } from 'react-router-dom'
 import { FaStar } from 'react-icons/fa'
-
+import { useContext } from "react"
+import { DataContext } from "../DataContext"
 
 
 export default function ReviewDetails () {
         let { id } = useParams()
+
+        const { user } = useContext(DataContext)
+
         let navigate = useNavigate()
 
         function backToRecipes(){
@@ -19,12 +23,10 @@ export default function ReviewDetails () {
         
       
         const [reviews, setReviews] = useState('')
-       
+      
         const getReviews= async ()=>{
             const response =await axiosCreate.get(`/api/reviews/${id}`)
             setReviews(response.data)
-            
-          
           }
     
         useEffect(()=>{
@@ -32,18 +34,14 @@ export default function ReviewDetails () {
             
           },[])
       
-          console.log(reviews)
 
-          
-        return (reviews) ? (
+        return (reviews  && user) ? (
         <div className="reviewdetail">{
     
             
                 <div key={reviews.id}>
                     <h2> {reviews.user.username} states that the recipe was {reviews.rating} out of 5 <FaStar size={20} color="gold" /> and they said that {reviews.comment}  </h2>
-                
-    
-                 </div>
+                </div>
     
             
         }
@@ -53,8 +51,13 @@ export default function ReviewDetails () {
                 <div className='returnbutton'>
                 <button className='tohome'><Link to='/'> Home </Link> </button>
                 <button onClick={backToRecipes} className='recipe'>Back</button>
-                <UpdateReview id={id}/>
-                <DeleteReview id={id} recipeId={reviews.recipe_id}/>
+                {(reviews.user.username === user.username) ? (
+                  <div>
+                  <UpdateReview id={id}/>
+                  <DeleteReview id={id} recipeId={reviews.recipe_id}/> 
+                  </div>)
+                  : null}
+                
                 </div>
               </div>
     </div>

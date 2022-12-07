@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {useNavigate} from "react-router-dom"
+import "../styling/recipe-list.css"
 
 export default function RecipeList () {
     const [recipe, setRecipe]= useState([])
@@ -42,16 +43,16 @@ console.log(recipe)
         (!recipe)?
         <h2>Loading...</h2>
         :
-        <div className="test-wrapper">
+        <div className="recipe-list-page">
         <h3>RecipeList</h3>
-        <div >{
-            recipe.map((x)=>(
-                <div>
-                <div onClick={()=>goToRecipe(x)} key={x.id}>{x.name} by {x.user.username} </div>
-                <div></div>
-                </div>
-            ))
-            }</div>
+            <div className='recipe-list'>
+                {recipe.map((x)=>(
+                    <div onClick={()=>goToRecipe(x)} key={x.id} className='recipe-list-item test-wrapper'>
+                        <div className='recipe-list-item-title'>{x.name}</div>
+                        <div className='recipe-list-item-user'>by {x.user.username}</div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

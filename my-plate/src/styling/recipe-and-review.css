@@ -36,6 +36,15 @@
 
 /*reviews*/
 
+.reviews {
+    border-top: 2px solid #A04100;
+}
+
+.reviewlist {
+    /* border-top: 2px solid #A04100; */
+    margin-bottom: 30px;
+}
+
 .rating-average {
     font-size: 20px;
 }
@@ -46,3 +55,12 @@
 }
 
 
+/*write review*/
+.write-review-wrapper {
+    border-top: 2px solid #A04100;
+    margin-top: 30px;
+}
+
+.display-review-content {
+    font-style: italic;
+}

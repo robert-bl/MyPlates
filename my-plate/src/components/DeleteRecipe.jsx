@@ -9,6 +9,7 @@ export default function DeleteRecipe ({id}) {
     let navigate =useNavigate()
 
 const DeleteRecipe = async (data) => {
+
   
     try {
         const response = await axiosCreate.delete(`/api/recipes/${id}`, data)

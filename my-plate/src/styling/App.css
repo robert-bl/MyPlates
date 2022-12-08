@@ -10,7 +10,7 @@
 /* Styling for links with link class */
 .link {
   text-decoration: none;
-  color: black;
+  color: #00364A;
 }
 
 /*Landing*/
@@ -27,4 +27,36 @@
 /*Main*/
 .main-wrapper {
   margin-top: 160px;
+}
+
+/*footer*/
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: #31BED4;
+  height: 25px;
+  margin: 0
+}
+
+.contributor-wrapper {
+  margin-right: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contributor {
+  margin-right: 10px;
+  margin-top: 2px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-text {
+
+}
+
+.spacer {
+  height: 25px
 }

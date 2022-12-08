@@ -3,7 +3,7 @@ export default function Footer () {
         <div className="footer-wrapper">
             <div className="contributor-wrapper">
                 <div className="contributor">
-                    | Alvin Touch: 
+                    | Alvin Toch: 
                     <a href="https://github.com/Anasterisk" target="_blank" className="link">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style={{width: "16px" }}/></a>
                     <a href="https://www.linkedin.com/in/alvin-toch/" target="_blank" className="link"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" style={{width: "16px" }}/></a>

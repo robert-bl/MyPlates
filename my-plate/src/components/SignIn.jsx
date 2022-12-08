@@ -67,7 +67,7 @@ export default function SignIn (props) {
                         />
                     </div>
                     <div className="input-wrapper">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">Password:</label>
                         <input
                             onChange={handleChange}
                             type="password"

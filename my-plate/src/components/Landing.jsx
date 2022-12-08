@@ -7,16 +7,14 @@ export default function Landing (props) {
 
     console.log(user)
     return (
-        <div className="test-wrapper">
-       
+        <div className="landing-wrapper">
         
-        {!user ? <h1>Welcome recipe enthusiasts! Please sign in or peruse our recipe list</h1>: <h1> Welcome {user.username} </h1>}
-
-    
-
+        {!user ? <h1 className="landing-text">Welcome recipe enthusiasts!</h1>: <h1 className="landing-text"> Welcome {user.username} </h1>}
 
         <img src='https://media.tenor.com/S3LC3hmnUp0AAAAC/cooking-chef.gif ' width={400} height={400}/>
         
+        <h1 className="landing-text">Lets get cookin'</h1>
+
         </div>
     )
 }

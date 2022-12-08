@@ -1,5 +1,13 @@
 /*display recipe*/
 
+
+.display-recipe-wrapper {
+    width: 80vw;
+    background-color: #E6F4F1;
+    color: #00364A;
+    margin: auto;
+}
+
 .recipe-title {
     margin-top: 50px;
     font-weight: bold;

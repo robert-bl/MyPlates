@@ -4,7 +4,6 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
 import DeleteRecipe from './DeleteRecipe'
-import ReviewDetails from './ReviewDetails'
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
 import '../styling/recipe-and-review.css'
@@ -56,7 +55,7 @@ const goToUpdate = () => {
         (!recipe)?
         <h2>Loading...</h2>
         :
-        <div className="test-wrapper">
+        <div className="display-recipe-wrapper">
             <div className='recipe-title'>
             {recipe.name} 
             </div>
@@ -64,13 +63,14 @@ const goToUpdate = () => {
             by {recipe.user.username}
             </div>
 
-            {!user? <div><Link to='/login' className='link'>Login to edit</Link></div>:(user.id === recipe.userId ?
+            {!user? null:(user.id === recipe.userId ?
             <button onClick={(event) => {
                 event.preventDefault()
                 goToUpdate()
             }}>Update Recipe</button>
             :
-            <div>Login as {recipe.user.username} to edit</div>
+            null
+            // <div>Login as {recipe.user.username} to edit</div>
             )}
             
             <div className="description-wrapper">
@@ -133,88 +133,6 @@ const goToUpdate = () => {
                 <div>{recipe.measurement20}</div>
             </ul>
             </div>
-                    {/* <ul>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient1}</div>
-                            <div>{recipe.measurement1}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient2}</div>
-                            <div>{recipe.measurement2}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient3}</div>
-                            <div>{recipe.measurement3}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient4}</div>
-                            <div>{recipe.measurement4}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient5}</div>
-                            <div>{recipe.measurement5}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient6}</div>
-                            <div>{recipe.measurement6}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient7}</div>
-                            <div>{recipe.measurement7}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient8}</div>
-                            <div>{recipe.measurement8}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient9}</div>
-                            <div>{recipe.measurement9}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient10}</div>
-                            <div>{recipe.measurement10}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient11}</div>
-                            <div>{recipe.measurement11}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient12}</div>
-                            <div>{recipe.measurement12}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient13}</div>
-                            <div>{recipe.measurement13}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient14}</div>
-                            <div>{recipe.measurement14}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient15}</div>
-                            <div>{recipe.measurement15}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient16}</div>
-                            <div>{recipe.measurement16}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient17}</div>
-                            <div>{recipe.measurement17}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient18}</div>
-                            <div>{recipe.measurement18}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient19}</div>
-                            <div>{recipe.measurement19}</div>
-                        </div>
-                        <div className="display-ingredient">
-                            <div>{recipe.ingredient20}</div>
-                            <div>{recipe.measurement20}</div>
-                        </div>
-                    </ul> */}
                 </div>
                 <div className="directions-wrapper">
                     <div className="diplay-recipe-section-header">

@@ -1,27 +1,40 @@
 /*header*/
 .header-wrapper {
+    position: fixed;
+    width: 100vw;
     top: 0;
 }
 
 .header{
-    margin: 0;
+    margin-top: -40px;
+    margin-bottom: 0;
     text-align: center;
     font-size: 120px;
-    color: darkorange;
+    height: 145px;
+    color: #E6F4F1;
 }
 
 .headerbackground {
-    background-image: url("https://i.redd.it/hwnveiz6u7t61.jpg");
+    /* background-image: url("https://i.redd.it/hwnveiz6u7t61.jpg"); */
+    background-color: #00364A;
     background-position: center;
-    
+    height: 145px;
 }
+
+/* .header-text-background {
+    background-color: #E6F4F1;
+} */
 
 /*NavBar*/
 .nav{
-    background-color: #A04100;
+    margin: 0;
+    background-color: #31BED4;
 }
 
 .navbar-links {
+    font-size: x-large;
     display: flex;
     justify-content: space-around;
+    align-items: flex-end;
+    height: 55px;
 }

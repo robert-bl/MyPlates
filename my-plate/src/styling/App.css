@@ -15,10 +15,16 @@
 
 /*Landing*/
 
-.landing{
-  text-align: center;
-  font-size: 30px;
-  color: purple;
+.landing-wrapper {
+  width: 80vw;
+  margin: auto
 }
 
+.landing-text {
 
+}
+
+/*Main*/
+.main-wrapper {
+  margin-top: 160px;
+}

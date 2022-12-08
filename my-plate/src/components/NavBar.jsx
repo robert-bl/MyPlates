@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
+import { useEffect } from "react"
 
 export default function NavBar () {
 
@@ -8,23 +9,21 @@ export default function NavBar () {
 
     const { handleLogOut, user } = useContext(DataContext)
 
-    const goToUserPage = () => {
-        navigate(`/user/${user.id}`)
-    }
+
+
+    // const goToUserPage = () => {
+    //     user ? navigate(`/user/${user.id}`) : null
+    // }
 
     return (
         <div className="nav">
             <div className="navbar-links">
-                <button> <Link to="/" className="link">Home</Link></button>
-                {/* <button><Link to="/register" className="link">Register</Link></button> */}
-
-                {/* <button><Link to='/createrecipe' className="link">Add Your Recipe</Link></button> */}
-                <button><Link to='/recipelist' className="link">All Recipes</Link></button>
-                <button><Link to='randomrecipe' className="link">Random recipe</Link></button>
-                {/* <button><Link to='reviews' className="link">All Reviews</Link></button> */}
-                {!user ? null : <button onClick={goToUserPage}>User Page</button>}
-                {!user ? null : <button><Link onClick={handleLogOut} to='/'>Logout</Link></button>}
-                {user ? null : <button><Link to="/login" className="link">Login</Link></button>}
+                <Link to="/" className="link">Home</Link>
+                <Link to='/recipelist' className="link">All Recipes</Link>
+                <Link to='randomrecipe' className="link">Random recipe</Link>
+                {!user ? null : <Link to={`user/${user.id}`} className="link">User Page</Link>}
+                {!user ? null : <Link onClick={handleLogOut} to='/' className="link">Logout</Link>}
+                {user ? null : <Link to="/login" className="link">Login</Link>}
             </div>
         </div>
     )

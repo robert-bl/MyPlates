@@ -8,17 +8,15 @@ export default function RandomRecipe () {
     const navigate = useNavigate()
     const [recipe, setRecipe]= useState(null)
   
-
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/recipes/`);
 
-            console.log(response)
             const random = Math.floor(Math.random()*response.data.length) 
             
             setRecipe(response.data[random])
-            navigate(`/displayrecipe/${recipe.id}`)
+            if(recipe){navigate(`/displayrecipe/${recipe.id}`)}
         } catch(e){
             throw e
         }

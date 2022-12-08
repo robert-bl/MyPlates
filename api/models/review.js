@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   },
     rating: DataTypes.FLOAT,
-    comment: DataTypes.STRING
+    comment: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Review',

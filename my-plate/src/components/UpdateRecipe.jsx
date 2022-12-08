@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { BASE_URL } from "../services/apiServices"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import axiosCreate from "../services/apiServices"
+import DeleteRecipe from './DeleteRecipe'
+import { DataContext } from "../DataContext"
 
 export default function UpdateRecipe () {
 
@@ -11,9 +13,12 @@ export default function UpdateRecipe () {
     //bring into context for deployment
     let { recipe_id } = useParams()
 
+    const { user } = useContext(DataContext)
+    
     //initial form state for recipe
     const initialRecipeState = {
         name: "",
+        imgUrl:"",
         description: "",
         directions: "",
         ingredient1: "",
@@ -100,6 +105,10 @@ export default function UpdateRecipe () {
                     <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="placeholder" value={recipeInfo.name}></input>
                 </div>
                 <div>
+                <label htmlFor="">Image Url:</label>
+                <input style={{width: "300px" }} type="text" id="imgUrl" onChange={handleChange} placeholder="placeholder" value={recipeInfo.imgUrl}></input>
+                </div>
+                <div>
                 <label htmlFor="">Description:</label>
                 <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={recipeInfo.description}></textarea>
                 </div>
@@ -126,6 +135,11 @@ export default function UpdateRecipe () {
                 </div>
                 <button type="submit">Update Recipe</button>
             </form>
+            {!user ? null:(user.id === recipeInfo.userId ?
+            <DeleteRecipe id={recipe_id}/>
+            :
+            null
+            )}
         </div>
     )
 }

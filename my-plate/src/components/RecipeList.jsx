@@ -44,7 +44,7 @@ console.log(recipe)
         <h2>Loading...</h2>
         :
         <div className="recipe-list-page">
-        <h3>RecipeList</h3>
+        <h3>Recipes</h3>
             <div className='recipe-list'>
                 {recipe.map((x)=>(
                     <div onClick={()=>goToRecipe(x)} key={x.id} className='recipe-list-item test-wrapper'>

@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 import './styling/App.css';
 import axiosCreate from './services/apiServices';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -58,7 +59,9 @@ function App() {
       <DataContext.Provider value={{authenticated, toggleAuthenticated, user, setUser, handleLogOut}}>
         <Header />
         <Main />
+        <Footer />
       </DataContext.Provider>
+      <div className='spacer'></div>
     </div>
   );
 }

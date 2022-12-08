@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate} from "react-router-dom"
-
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
+import "../styling/recipe-list.css"
 
 export default function UserPage () {
-    const [user,setUser]=useState(null)
+    const { user } = useContext(DataContext)
+    const [userCookbook, setUserCookbook] = useState(null)
     const navigate = useNavigate();
     let {id}=useParams()
     let verified = false
@@ -19,7 +20,7 @@ export default function UserPage () {
             try{
             const response = await axios.get(`http://localhost:3001/api/users/get-user-and-recipes/${id}`);
         
-            setUser(response.data)
+            setUserCookbook(response.data)
             console.log(response)
         } catch(e){
             console.log(`please hold`)
@@ -34,25 +35,28 @@ const goToRecipe = (x)=>{
     // navigate(`/randomrecipe`)
 }
 
+
 return (
-    (!user)?
+    (!user || !userCookbook)?
     <h2>Loading...</h2>
     :
-    <div className="test-wrapper">
+    <div className="userpage-wrapper">
         
-        
-        <h3>User's Page</h3>
-        <h2>Welcome to {user.username}'s cookbook </h2>
+        {parseInt(user.id) === parseInt(id) ? <h2>Welcome to your cookbook {userCookbook.username}</h2> : <h2>Welcome to {userCookbook.username}'s cookbook </h2>}
         <hr></hr>
-        <Link to="/createrecipe">Post a New Recipe</Link>
+        {console.log(user.id)}
+        {console.log(id)}
+        {parseInt(user.id) === parseInt(id) ? <Link to="/createrecipe" className='link'>Post a New Recipe</Link> : null}
         <hr></hr>
         
-        <div>
-            {
-                user.recipe.map((x)=>(
-                    <div onClick={()=>goToRecipe(x)} key={x.id}>{x.name} </div>
-                ))
-            }
+        <div className='recipe-list'>
+            {userCookbook.recipe.map((x)=>(
+                    <div onClick={()=>goToRecipe(x)} key={x.id} className='recipe-list-item test-wrapper'>
+                        <div className='recipe-list-item-title'>
+                        {x.name}
+                        </div>
+                    </div>
+            ))}
         </div>
         <img src='https://media.tenor.com/D9c1c2lzfxIAAAAi/tkthao219-peach.gif' width={400} height={300}/>
     </div>

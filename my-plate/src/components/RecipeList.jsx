@@ -5,22 +5,16 @@ import "../styling/recipe-list.css"
 
 export default function RecipeList () {
     const [recipe, setRecipe]= useState([])
-    // const [user,setUser]=useState([])
-    //let userId = recipe.user_id
+
     const navigate = useNavigate();
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/recipes/`);
             setRecipe(response.data)
-           // const response2= await axios.get(`http://localhost:3001/api/users/`)
-            // setUser(response2.data)
 
-            // const response2= await axios.get(`http://localhost:3001/api/users/profiles`)
-            // setUser(response2.data)
-            // const response3= await axios.get(`http://localhost:3001/api/reviews/`)
         } catch(e){
-            console.log(`please hold`)
+           throw e
         }
     };
 getRecipe()
@@ -28,17 +22,13 @@ getRecipe()
 },[])
 
 const goToRecipe = (x)=>{
-    console.log(x.id)
     navigate(`/displayrecipe/${x.id}`)
-    // navigate(`/randomrecipe`)
 }
 const goToUser = (x)=>{
     navigate(`/user/${x.user.id}`)
 }
 
-console.log(recipe)
-// console.log(user[1])
-// console.log(user)
+
     return (
         (!recipe)?
         <h2>Loading...</h2>

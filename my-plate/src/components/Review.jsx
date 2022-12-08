@@ -17,7 +17,6 @@ export default function Review (props) {
             if (props.recipe_id) {
             const response = await axiosCreate.get(`/api/reviews/by-recipe/${props.recipe_id}`)
             setReviews(response.data)
-            console.log('hit')
             }
         }
         getData()
@@ -25,8 +24,6 @@ export default function Review (props) {
 
 
 let navigate = useNavigate()
-
-console.log(reviews)
 
 const showReviews=(reviews)=>{
     navigate(`/reviews/${reviews.id}`)

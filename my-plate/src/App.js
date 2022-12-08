@@ -43,17 +43,6 @@ function App() {
 
 
 
-  //placeholder state variable for Context setup
-  // const [userInfo, setUserInfo] = useState({
-  //   userId: 1,
-  //   username: ""
-  // })
-  // const [recipeInfo, setRecipeInfo] = useState({
-  //   recipeId: 1,
-  // })
-
-
-
   return (
     <div className="App">
       <DataContext.Provider value={{authenticated, toggleAuthenticated, user, setUser, handleLogOut}}>

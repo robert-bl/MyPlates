@@ -46,8 +46,6 @@ return (
         <hr></hr>
 
         {!user ? null : 
-        // (console.log(user.id))
-        // (console.log(id))
         (parseInt(user.id) === parseInt(id) ? <Link to="/createrecipe" className='link'>Post a New Recipe</Link> : null)}
         <hr></hr>
         

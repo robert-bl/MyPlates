@@ -81,7 +81,8 @@ if(reviews){
                 
                 } else {
                     return (
-                        <div className='rating-average'>This recipe has an average review of {finalAverage} <FaStar size={30} color="gold"/> stars</div> 
+                        <div className='rating-average'>This recipe has an average review of 
+                        {finalAverage} <FaStar size={30} color="gold"/> stars</div> 
                     )
                 }
         })()  

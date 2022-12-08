@@ -36,7 +36,6 @@ export default function CreateRecipe () {
         } else {
             alert("Maximum of 20 ingredients allowed")
         }
-        console.log(createRecipeForm)
     }
 
     //delete ingredient field
@@ -47,7 +46,6 @@ export default function CreateRecipe () {
         setIngredientNumber(localArr)
         setCreateRecipeForm({...createRecipeForm, ['ingredient' + (n)]: null, ['measurement' + (n)]: null})
         }
-        console.log(createRecipeForm)
     }
 
     //posts createRecipeForm to the database

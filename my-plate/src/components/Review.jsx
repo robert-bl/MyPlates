@@ -94,7 +94,7 @@ if(reviews){
             reviews.map((review)=>(
             <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
 
-            <div>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/> and they said that {review.comment}  </div>
+            <div>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/>"{review.comment}"  </div>
             </div>
             ))
 

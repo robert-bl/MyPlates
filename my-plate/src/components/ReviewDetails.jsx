@@ -40,7 +40,7 @@ export default function ReviewDetails () {
     
             
                 <div key={reviews.id}>
-                    <h2> {reviews.user.username} states that the recipe was {reviews.rating} out of 5 <FaStar size={20} color="gold" /> and they said that {reviews.comment}  </h2>
+                    <h2> {reviews.user.username} states that the recipe was {reviews.rating} out of 5 <FaStar size={20} color="gold" /> "{reviews.comment}"  </h2>
                 </div>
     
             

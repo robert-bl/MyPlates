@@ -21,7 +21,7 @@ export default function NavBar () {
                 <Link to="/" className="link">Home</Link>
                 <Link to='/recipelist' className="link">All Recipes</Link>
                 <Link to='randomrecipe' className="link">Random recipe</Link>
-                {!user ? null : <Link to={`user/${user.id}`} className="link">User Page</Link>}
+                {!user ? null : <Link to={`/user/${user.id}`} className="link">User Page</Link>}
                 {!user ? null : <Link onClick={handleLogOut} to='/' className="link">Logout</Link>}
                 {user ? null : <Link to="/login" className="link">Login</Link>}
             </div>

@@ -60,7 +60,7 @@ const goToUpdate = () => {
             {recipe.name} 
             </div>
             <div>
-            by {recipe.user.username}
+            by <Link to={`/user/${recipe.user.id}`} className="link">{recipe.user.username}</Link>
             </div>
 
             {!user? null:(user.id === recipe.userId ?

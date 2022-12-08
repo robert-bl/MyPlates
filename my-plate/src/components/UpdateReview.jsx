@@ -50,6 +50,7 @@ const handleChange2 = (event) => {
 return (
     <div className="test-wrapper">
         <h3>Update your review</h3>
+        <img src='https://media.tenor.com/to0k0Ly8tDQAAAAi/busy-cat.gif' width={300} height={300}/>
         <form onSubmit={handleSubmit}>
             
             <label>Enter a number out of 5:</label>
@@ -63,8 +64,9 @@ return (
             <option value="5">5</option>
         </select>
 
-            <label>Rewrite your opinion on this recipe:</label>
-            <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></textarea>
+            <label style={{display:'block', float:'bottom', marginLeft:'auto', marginRight:'auto' }}>Rewrite your opinion on this recipe:</label>
+           
+            <textarea style={{width: "500px", paddingBottom:"100px", display:'block', float:'bottom', marginLeft:'auto', marginRight:'auto' }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></textarea>
             <button type="submit" >Submit</button>
         </form>
     </div>

@@ -53,6 +53,7 @@ console.log(recipe)
                     </div>
                 ))}
             </div>
+            <img src='https://media.tenor.com/m6WOQkmX3wQAAAAi/tkthao219-bubududu.gif' width={300} height={300} style={{display:"block", marginLeft:"auto",marginRight:'auto'}}/>
         </div>
     )
 }

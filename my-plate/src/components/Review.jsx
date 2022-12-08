@@ -89,6 +89,8 @@ if(reviews){
             
         </div>
         <div className='reviews'>
+        <h4>You may edit your review by clicking on it</h4>
+
         <div>Reviews:</div>
         {
             reviews.map((review)=>(

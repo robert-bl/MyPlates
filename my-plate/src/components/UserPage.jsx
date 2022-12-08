@@ -37,16 +37,18 @@ const goToRecipe = (x)=>{
 
 
 return (
-    (!user || !userCookbook)?
+    (!userCookbook)?
     <h2>Loading...</h2>
     :
     <div className="userpage-wrapper">
-        
-        {parseInt(user.id) === parseInt(id) ? <h2>Welcome to your cookbook {userCookbook.username}</h2> : <h2>Welcome to {userCookbook.username}'s cookbook </h2>}
+        {!user ? <h2>Welcome to {userCookbook.username}'s cookbook </h2> :
+        (parseInt(user.id) === parseInt(id) ? <h2>Welcome to your cookbook {userCookbook.username}</h2> : <h2>Welcome to {userCookbook.username}'s cookbook </h2>)}
         <hr></hr>
-        {console.log(user.id)}
-        {console.log(id)}
-        {parseInt(user.id) === parseInt(id) ? <Link to="/createrecipe" className='link'>Post a New Recipe</Link> : null}
+
+        {!user ? null : 
+        // (console.log(user.id))
+        // (console.log(id))
+        (parseInt(user.id) === parseInt(id) ? <Link to="/createrecipe" className='link'>Post a New Recipe</Link> : null)}
         <hr></hr>
         
         <div className='recipe-list'>

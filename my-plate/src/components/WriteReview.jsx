@@ -67,9 +67,10 @@ return (
             <option value="5">5</option>
             </select>
 
-            <label>Write your opinion on this recipe:</label>
-            <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></textarea>
+            <label style={{display:'block', float:'bottom', marginLeft:'auto', marginRight:'auto' }}>Give your opinion on this recipe:</label>
+            <textarea style={{width: "500px", paddingBottom:"100px", display:'block', float:'bottom', marginLeft:'auto', marginRight:'auto' }} type="text" id="comment" onChange={handleChange} value={reviewForm.comment}></textarea>
             <button type="submit">Submit</button>
+            <img src='https://media.tenor.com/KayBlLo95RoAAAAC/peach-cat.gif' width={150} height={150}/>
         </form>
     </div>
 )

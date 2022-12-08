@@ -39,11 +39,14 @@ return (
     <h2>Loading...</h2>
     :
     <div className="test-wrapper">
+        
+        
         <h3>User's Page</h3>
         <h2>Welcome to {user.username}'s cookbook </h2>
         <hr></hr>
         <Link to="/createrecipe">Post a New Recipe</Link>
         <hr></hr>
+        
         <div>
             {
                 user.recipe.map((x)=>(
@@ -51,6 +54,7 @@ return (
                 ))
             }
         </div>
+        <img src='https://media.tenor.com/D9c1c2lzfxIAAAAi/tkthao219-peach.gif' width={400} height={300}/>
     </div>
 )
 

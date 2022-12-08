@@ -6,14 +6,16 @@
 </picture>
 
 ## *Description*:
-This is a recipe website that allows users create an account and upload their own personal recipes. Users can also review other user recipes by giving a star review out of 5 stars and leave a critique. 
+This is a recipe website that allows users to create an account and upload their own personal recipes. Users can also review other user recipes by giving a star review out of 5 stars and leaving a critique. After signing on to an account, you can create a recipe by accessing the user page. Once posted, you can check it out on the recipe list. When a recipe is clicked, you can see the directions and ingredients listed. Users can also see, edit, and post their reviews on the recipe page. 
 
 
 ### *How to get started*:
 You can simply fork this into your github repo and clone this on your terminal. 
 
+
+
 #### *Technologies used*: 
-This was built with react js platform for the front end. The backend used sequelize to build the databases. 
+This was built with react js platform for the front end. The backend used sequelize to build the databases. The frontend required installing the axios, react-icon, and react-router-dom  libraries to work. 
 
 ### *Social Links*:
 Robert Buskirk Lechner
@@ -55,5 +57,5 @@ Andrew Zheng
 [Trello Board link](https://trello.com/b/b6viDuYE/project-3-general-assembly)
 
 
-###### Credit:
+
 

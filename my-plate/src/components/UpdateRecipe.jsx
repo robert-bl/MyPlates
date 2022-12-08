@@ -5,6 +5,7 @@ import axios from "axios"
 import axiosCreate from "../services/apiServices"
 import DeleteRecipe from './DeleteRecipe'
 import { DataContext } from "../DataContext"
+import '../styling/recipe-and-review.css'
 
 export default function UpdateRecipe () {
 
@@ -97,39 +98,41 @@ export default function UpdateRecipe () {
 
 
     return (
-        <div className="update-recipe-wrapper">
+        <div className="create-recipe-wrapper">
             <h1>Update Recipe</h1>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="recipe-input-section">
                     <label htmlFor="">Recipe Name:</label>
-                    <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="placeholder" value={recipeInfo.name}></input>
+                    <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="recipe name" value={recipeInfo.name}></input>
                 </div>
-                <div>
+                <div className="recipe-input-section">
                 <label htmlFor="">Image Url:</label>
-                <input style={{width: "300px" }} type="text" id="imgUrl" onChange={handleChange} placeholder="placeholder" value={recipeInfo.imgUrl}></input>
+                <input style={{width: "300px" }} type="text" id="imgUrl" onChange={handleChange} placeholder="url" value={recipeInfo.imgUrl}></input>
                 </div>
-                <div>
+                <div className="recipe-input-section">
                 <label htmlFor="">Description:</label>
-                <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="placeholder" value={recipeInfo.description}></textarea>
+                <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="description" onChange={handleChange}placeholder="recipe description" value={recipeInfo.description}></textarea>
                 </div>
-                <div>
+                <div className="recipe-input-section">
                 <label htmlFor="">Ingredients:</label>                    
                     {ingredientNumber.map((e) => 
                         <div key={e}>
                             <label htmlFor="">Ingredient:</label>
-                            <input style={{width: "300px"}} type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="placeholder" value={recipeInfo['ingredient' + e]}></input>
+                            <input style={{width: "300px"}} type="text" id={'ingredient'+ e} onChange={handleChange}placeholder="ingredient name" value={recipeInfo['ingredient' + e]}></input>
                             <label htmlFor="">Amount:</label>
-                            <input type="text" id={'measurement' + e} onChange={handleChange}placeholder="placeholder" value={recipeInfo['measurement' + e]}></input>
+                            <input type="text" id={'measurement' + e} onChange={handleChange}placeholder="ingredient quantity" value={recipeInfo['measurement' + e]}></input>
                         </div>
                         )}
-                        <button onClick={(event) => {
-                            event.preventDefault()
-                            addIngredientField()}}>Add Ingredient</button>
-                        <button onClick={(event) => {
-                            event.preventDefault()
-                            removeIngredientField()}}>Remove Ingredient</button>
+                        <div className="buttons">
+                            <button onClick={(event) => {
+                                event.preventDefault()
+                                addIngredientField()}}>Add Ingredient</button>
+                            <button onClick={(event) => {
+                                event.preventDefault()
+                                removeIngredientField()}}>Remove Ingredient</button>
+                        </div>
                 </div>
-                <div>
+                <div className="recipe-input-section">
                 <label htmlFor="">Directions:</label>
                 <textarea style={{width: "500px", paddingBottom:"100px" }} type="text" id="directions" onChange={handleChange}placeholder="placeholder" value={recipeInfo.directions}></textarea>
                 </div>

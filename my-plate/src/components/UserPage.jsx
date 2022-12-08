@@ -40,13 +40,18 @@ return (
     <h2>Loading...</h2>
     :
     <div className="userpage-wrapper">
-        {!user ? <h2>Welcome to {userCookbook.username}'s cookbook </h2> :
+        {!user ? <h2>Welcome to {userCookbook.username}'s cookbook</h2> :
         (parseInt(user.id) === parseInt(id) ? <h2>Welcome to your cookbook {userCookbook.username}</h2> : <h2>Welcome to {userCookbook.username}'s cookbook </h2>)}
-        <hr></hr>
+
+
 
         {!user ? null : 
-        (parseInt(user.id) === parseInt(id) ? <Link to="/createrecipe" className='link'>Post a New Recipe</Link> : null)}
-        <hr></hr>
+        (parseInt(user.id) === parseInt(id) ? 
+        <div className="new-recipe-link-wrapper">  
+            <Link to="/createrecipe" className='new-recipe-link'>Post a New Recipe</Link>
+        </div> 
+        : null)}
+
         
         <div className='recipe-list'>
             {userCookbook.recipe.map((x)=>(

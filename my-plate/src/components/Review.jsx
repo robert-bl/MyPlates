@@ -3,9 +3,14 @@ import{ useState, useEffect } from 'react'
 import axiosCreate from '../services/apiServices'
 import { FaStar } from 'react-icons/fa'
 import '../styling/recipe-and-review.css'
+import { useContext } from "react"
+import { DataContext } from "../DataContext"
 
 
 export default function Review (props) {
+
+    const { user } = useContext(DataContext)
+
     const [reviews, setReviews] = useState(null)
     let finalAverage = 0
     
@@ -78,8 +83,7 @@ if(reviews){
                 
                 } else {
                     return (
-                        <div className='rating-average'>This recipe has an average review of 
-                        {finalAverage} <FaStar size={30} color="gold"/> stars</div> 
+                        <div className='rating-average'>This recipe has an average review of {finalAverage} <FaStar size={20} color="gold"/> stars</div> 
                     )
                 }
         })()  
@@ -87,14 +91,21 @@ if(reviews){
             
         </div>
         <div className='reviews'>
-        <h4>You may edit your review by clicking on it</h4>
 
         <div>Reviews:</div>
         {
             reviews.map((review)=>(
             <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
-
-            <div>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/>"{review.comment}"  </div>
+                    <div className="display-review-content">
+                        {review.user.username} says: "{review.comment}"
+                    </div>
+                    <div className="display-review-rating">
+                        {review.rating} out of 5 <FaStar size={20} color="gold"/>
+                    </div>
+                {user ? 
+                user.id === review.userId ? <button onClick={()=>showReviews(review)}>Update This Review</button> 
+                :null
+                :null}
             </div>
             ))
 

@@ -33,3 +33,13 @@
 
 }
 
+/*User Page*/
+.new-recipe-link-wrapper {
+    background-color: #00364A;
+}
+
+.new-recipe-link {
+    text-decoration: none;
+    color: #E6F4F1;
+    font-weight: bold;
+}

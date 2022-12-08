@@ -36,7 +36,7 @@ export default function RandomRecipe () {
 getRecipe()
 
 },[recipe])
-
+ //hi
 
     return ( 
         (!recipe)?

@@ -1,11 +1,10 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
-import { useEffect } from "react"
+
 
 export default function NavBar () {
 
-    let navigate = useNavigate()
 
     const { handleLogOut, user } = useContext(DataContext)
 

@@ -4,7 +4,7 @@ import { DataContext } from "../DataContext"
 import axiosCreate from "../services/apiServices"
 
 
-export default function SignIn (props) {
+export default function SignIn () {
 
     let navigate = useNavigate()
 

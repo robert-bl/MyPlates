@@ -10,7 +10,7 @@ export default function UserPage () {
     const [userCookbook, setUserCookbook] = useState(null)
     const navigate = useNavigate();
     let {id}=useParams()
-    let verified = false
+    
 
     useEffect(()=>{
         const getRecipe = async ()=>{

@@ -64,7 +64,7 @@ const goToUpdate = () => {
                     About this Recipe:
                 </div>
                 {recipe.imgUrl===""||recipe.imgUrl===null?null:
-                <img src={recipe.imgUrl} alt="broken link" />}
+                <img src={recipe.imgUrl} alt="broken link" style={{maxWidth: '300px'}}/>}
                 <div>{recipe.description}</div>
             </div>
 

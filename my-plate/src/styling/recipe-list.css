@@ -35,10 +35,12 @@
 
 /*User Page*/
 .new-recipe-link-wrapper {
+    margin: 30px 60px 30px 60px;
     background-color: #00364A;
 }
 
 .new-recipe-link {
+    font-size: 25px;
     text-decoration: none;
     color: #E6F4F1;
     font-weight: bold;

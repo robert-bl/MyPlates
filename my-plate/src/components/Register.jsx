@@ -43,13 +43,12 @@ export default function Register () {
     const handleChangeUserName = (event) => {
         setRegisterForm({...registerForm, [event.target.id]: event.target.value.toLowerCase()})
     }
-   
 
 
     return (
-        <div className="test-wrapper">
+        <div className="register-wrapper">
             <h3>Register</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='register-form'>
                 <label>Username:</label>
                 <input type="text" id="username" onChange={handleChangeUserName} value={registerForm.username}></input>
                 <label>Password:</label>

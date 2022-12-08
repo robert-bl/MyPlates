@@ -44,7 +44,8 @@ export default function DisplayRecipe () {
     };
 getRecipe()
 },[])
-
+ 
+console.log(recipe)
 
 //has issue with axios call, the controller merges two tables Recipes and Users causing a delay in promise. citing anything from associated table causes it to crash during the initial of the page
 const goToUpdate = () => {
@@ -77,6 +78,7 @@ const goToUpdate = () => {
                 <div className="diplay-recipe-section-header">
                     About this Recipe:
                 </div>
+                <img src={recipe.imgUrl} />
                 <div>{recipe.description}</div>
             </div>
 
@@ -148,13 +150,7 @@ const goToUpdate = () => {
              {/* <button><Link to='/reviews' className="link">Check reviews</Link></button> */}
 
             {!user ? <Link to="/login" className="link">Login to write a review</Link> : <WriteReview id={id} />}
-            
-            {!user ? null:(user.id === recipe.userId ?
-            <DeleteRecipe id={id}/>
-            :
-            null
-            )}
-            
+           
         </div>
     )
 }

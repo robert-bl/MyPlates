@@ -35,6 +35,10 @@ const goToRecipe = (x)=>{
     // navigate(`/randomrecipe`)
 }
 
+const editRecipe = (x)=>{
+    navigate(`/updaterecipe/${x.id}`)
+}
+
 
 return (
     (!userCookbook)?
@@ -51,11 +55,14 @@ return (
         
         <div className='recipe-list'>
             {userCookbook.recipe.map((x)=>(
-                    <div onClick={()=>goToRecipe(x)} key={x.id} className='recipe-list-item test-wrapper'>
-                        <div className='recipe-list-item-title'>
+                    <div  key={x.id} className='recipe-list-item test-wrapper'>
+                        <div onClick={()=>goToRecipe(x)} className='recipe-list-item-title'>
                         {x.name}
                         </div>
+                        {!user ? null :
+                        (user.id==id?<button onClick={()=>editRecipe(x)}>Edit</button>:null)}
                     </div>
+                    
             ))}
         </div>
         <img src='https://media.tenor.com/D9c1c2lzfxIAAAAi/tkthao219-peach.gif' width={400} height={300}/>

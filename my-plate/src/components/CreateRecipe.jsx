@@ -17,6 +17,7 @@ export default function CreateRecipe () {
     //initial form state for recipe
     const initialRecipeState = {
         name: "",
+        imgUrl:"",
         description: "",
         directions: "",
         ingredient1: "",
@@ -88,6 +89,10 @@ export default function CreateRecipe () {
                 <div>
                     <label htmlFor="">Recipe Name:</label>
                     <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="placeholder" value={createRecipeForm.name}></input>
+                </div>
+                <div>
+                <label htmlFor="">Image Url:</label>
+                <input style={{width: "300px" }} type="text" id="imgUrl" onChange={handleChange} placeholder="placeholder" value={createRecipeForm.imgUrl}></input>
                 </div>
                 <div>
                 <label htmlFor="">Description:</label>

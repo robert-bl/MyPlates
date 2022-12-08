@@ -36,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    directions: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    directions: DataTypes.TEXT,
     ingredient1: DataTypes.STRING,
     ingredient2: DataTypes.STRING,
     ingredient3: DataTypes.STRING,

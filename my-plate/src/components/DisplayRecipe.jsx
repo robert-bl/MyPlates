@@ -3,7 +3,6 @@ import {React, useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import Review from './Review'
 import WriteReview from './WriteReview'
-import DeleteRecipe from './DeleteRecipe'
 import { useContext } from "react"
 import { DataContext } from "../DataContext"
 import '../styling/recipe-and-review.css'
@@ -16,12 +15,7 @@ export default function DisplayRecipe () {
     const { user } = useContext(DataContext)
 
     const [recipe, setRecipe]= useState(null)
-    // const [user,setUser]=useState({})
-
-    //can be removed, reviews now displaying through linked review component
-        // const [reviews, setReviews] = useState([])
-
-    // const recipeId = userParams()
+    
     let { id } = useParams() 
     useEffect(()=>{
         const getRecipe = async ()=>{
@@ -30,23 +24,16 @@ export default function DisplayRecipe () {
         
             setRecipe(response.data)
 
-            // const response2= await axios.get(`http://localhost:3001/api/users/${response.data.user_id}`)
-            // setUser(response2.data)
-
-        //can be removed, reviews now displaying through linked review component
-            // const response3= await axios.get(`http://localhost:3001/api/reviews/by-recipe/${response.data.id}`)
-            // setReviews(response3.data)
-            // console.log(`please hold`)
             
-        } catch(e){
-            console.log(`please hold`)
+            
+        } catch(error){
+            throw error
         }
     };
 getRecipe()
-},[])
+},[id])
+ 
 
-
-//has issue with axios call, the controller merges two tables Recipes and Users causing a delay in promise. citing anything from associated table causes it to crash during the initial of the page
 const goToUpdate = () => {
     navigate(`/updaterecipe/${id}`)
 }
@@ -70,13 +57,14 @@ const goToUpdate = () => {
             }}>Update Recipe</button>
             :
             null
-            // <div>Login as {recipe.user.username} to edit</div>
             )}
             
             <div className="description-wrapper">
                 <div className="diplay-recipe-section-header">
                     About this Recipe:
                 </div>
+                {recipe.imgUrl===""||recipe.imgUrl===null?null:
+                <img src={recipe.imgUrl} alt="broken link" />}
                 <div>{recipe.description}</div>
             </div>
 
@@ -145,16 +133,9 @@ const goToUpdate = () => {
             <hr></hr>
 
             <Review recipe_id={recipe.id} />
-             {/* <button><Link to='/reviews' className="link">Check reviews</Link></button> */}
 
             {!user ? <Link to="/login" className="link">Login to write a review</Link> : <WriteReview id={id} />}
-            
-            {!user ? null:(user.id === recipe.userId ?
-            <DeleteRecipe id={id}/>
-            :
-            null
-            )}
-            
+           
         </div>
     )
 }

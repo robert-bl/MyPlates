@@ -4,9 +4,6 @@ import { DataContext } from "../DataContext"
 import axiosCreate from "../services/apiServices"
 import { useNavigate } from "react-router-dom"
 
-//test
-import UpdateRecipe from "./UpdateRecipe"
-
 
 export default function CreateRecipe () {
     let navigate=useNavigate()
@@ -17,6 +14,7 @@ export default function CreateRecipe () {
     //initial form state for recipe
     const initialRecipeState = {
         name: "",
+        imgUrl:"",
         description: "",
         directions: "",
         ingredient1: "",
@@ -38,7 +36,6 @@ export default function CreateRecipe () {
         } else {
             alert("Maximum of 20 ingredients allowed")
         }
-        console.log(createRecipeForm)
     }
 
     //delete ingredient field
@@ -49,7 +46,6 @@ export default function CreateRecipe () {
         setIngredientNumber(localArr)
         setCreateRecipeForm({...createRecipeForm, ['ingredient' + (n)]: null, ['measurement' + (n)]: null})
         }
-        console.log(createRecipeForm)
     }
 
     //posts createRecipeForm to the database
@@ -78,16 +74,17 @@ export default function CreateRecipe () {
 
     return (
         <div className="test-wrapper">
-            <h3>CreateRecipe</h3>
-
-            {/* Tracks active user for testing, remove before deploymet */}
-            <h2>User {user?user.username:''}</h2>
+            <h3 style={{fontSize:"50px"}}>Create Recipe</h3>
 
 
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Recipe Name:</label>
                     <input style={{width: "300px" }} type="text" id="name" onChange={handleChange} placeholder="placeholder" value={createRecipeForm.name}></input>
+                </div>
+                <div>
+                <label htmlFor="">Image Url:</label>
+                <input style={{width: "300px" }} type="text" id="imgUrl" onChange={handleChange} placeholder="placeholder" value={createRecipeForm.imgUrl}></input>
                 </div>
                 <div>
                 <label htmlFor="">Description:</label>

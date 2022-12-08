@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 
 export default function WriteReview (props) {
     const { user } = useContext(DataContext)
-    // const { recipeInfo } = useContext(DataContext)
 
 let navigate = useNavigate()
   

@@ -17,7 +17,6 @@ export default function Review (props) {
             if (props.recipe_id) {
             const response = await axiosCreate.get(`/api/reviews/by-recipe/${props.recipe_id}`)
             setReviews(response.data)
-            console.log('hit')
             }
         }
         getData()
@@ -25,8 +24,6 @@ export default function Review (props) {
 
 
 let navigate = useNavigate()
-
-console.log(reviews)
 
 const showReviews=(reviews)=>{
     navigate(`/reviews/${reviews.id}`)
@@ -97,7 +94,7 @@ if(reviews){
             reviews.map((review)=>(
             <div key={review.id} className='reviewlist' onClick={()=>showReviews(review)}>
 
-            <div>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/> and they said that {review.comment}  </div>
+            <div>{review.user.username} states that the recipe was {review.rating} out of 5 <FaStar size={20} color="gold"/>"{review.comment}"  </div>
             </div>
             ))
 

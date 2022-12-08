@@ -1,8 +1,6 @@
-import { useState } from 'react'
+
 import axiosCreate from '../services/apiServices'
-import { useContext } from "react"
-import { DataContext } from "../DataContext"
-import { Link } from "react-router-dom"
+
 import { useNavigate} from "react-router-dom"
 
 
@@ -11,7 +9,7 @@ export default function DeleteRecipe ({id}) {
     let navigate =useNavigate()
 
 const DeleteRecipe = async (data) => {
-    console.log(id)
+  
     try {
         const response = await axiosCreate.delete(`/api/recipes/${id}`, data)
         return response.data

@@ -12,27 +12,22 @@ export default function UserPage () {
     let {id}=useParams()
     let verified = false
 
-    // const verification = ()=>{
-    //     if (user===null || )
-    // }
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
             const response = await axios.get(`http://localhost:3001/api/users/get-user-and-recipes/${id}`);
         
             setUserCookbook(response.data)
-            console.log(response)
+        
         } catch(e){
-            console.log(`please hold`)
+            throw e
         }
     };
 getRecipe()
 },[])
 
 const goToRecipe = (x)=>{
-    console.log(x.id)
     navigate(`/displayrecipe/${x.id}`)
-    // navigate(`/randomrecipe`)
 }
 
 const editRecipe = (x)=>{
@@ -68,17 +63,5 @@ return (
         <img src='https://media.tenor.com/D9c1c2lzfxIAAAAi/tkthao219-peach.gif' width={400} height={300}/>
     </div>
 )
-
-//Sample Auth protection code
-// return (user && authenticated) ? (
-//     <div>
-//         <h1>Display</h1>
-//     </div>
-// ) : (
-//     <div>
-//         <h1>Protected</h1>
-//         <button>Navigate to login</button>
-//     </div>
-// )
 
 }

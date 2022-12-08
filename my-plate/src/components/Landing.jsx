@@ -5,7 +5,7 @@ export default function Landing (props) {
 
     const { user } = useContext(DataContext)
 
-    console.log(user)
+
     return (
         <div className="landing-wrapper">
         

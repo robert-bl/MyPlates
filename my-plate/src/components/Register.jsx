@@ -12,7 +12,6 @@ export default function Register () {
     const initialState = {
         username: '',
         password: '',
-        // confirmPassword: ''
     }
 
     //state variable for form data
@@ -33,7 +32,7 @@ export default function Register () {
         setRegisterForm({...registerForm, [event.target.id]: event.target.value})
     }
 
-    //on ubmit button click: make axios call using form data and resent form data to initial state
+    //on submit button click: make axios call using form data and resent form data to initial state
     const handleSubmit = async (event) => {
         event.preventDefault()
         await RegisterUser(registerForm)
@@ -55,9 +54,6 @@ export default function Register () {
                 <input type="text" id="username" onChange={handleChangeUserName} value={registerForm.username}></input>
                 <label>Password:</label>
                 <input type="password" id="password" onChange={handleChange} value={registerForm.password}></input>
-
-                {/* <label>Confirm Password:</label>
-                <input type="password" id="confirmPassword" onChange={handleChange} value={registerForm.confirmPassword}></input> */}
 
                 <button type="submit">Submit</button>
             </form>

@@ -4,9 +4,6 @@ import { DataContext } from "../DataContext"
 import axiosCreate from "../services/apiServices"
 import { useNavigate } from "react-router-dom"
 
-//test
-import UpdateRecipe from "./UpdateRecipe"
-
 
 export default function CreateRecipe () {
     let navigate=useNavigate()
@@ -79,10 +76,7 @@ export default function CreateRecipe () {
 
     return (
         <div className="test-wrapper">
-            <h3>CreateRecipe</h3>
-
-            {/* Tracks active user for testing, remove before deploymet */}
-            <h2>User {user?user.username:''}</h2>
+            <h3 style={{fontSize:"50px"}}>Create Recipe</h3>
 
 
             <form onSubmit={handleSubmit}>

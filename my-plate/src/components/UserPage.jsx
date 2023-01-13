@@ -15,7 +15,7 @@ export default function UserPage () {
     useEffect(()=>{
         const getRecipe = async ()=>{
             try{
-            const response = await axios.get(`https://git.heroku.com/myplates-hapi.git/api/users/get-user-and-recipes/${id}`);
+            const response = await axios.get(`https://myplates-hapi.herokuapp.com/api/users/get-user-and-recipes/${id}`);
         
             setUserCookbook(response.data)
         

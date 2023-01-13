@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = 'https://git.heroku.com/myplates-hapi.git'
+export const BASE_URL = 'https://myplates-hapi.herokuapp.com'
 
 const axiosCreate = axios.create({ baseURL: BASE_URL})
 
